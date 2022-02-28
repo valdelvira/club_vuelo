@@ -1,6 +1,10 @@
 const router = require("express").Router()
 const Event = require('../models/Event.model')
+<<<<<<< HEAD
+const Comment = require("./../models/Comment.model")
+=======
 const Comment = require('../models/Comment.model')
+>>>>>>> b4252312f4c668c761a9116ee1cc5c427634f22f
 
 router.get("/", (req, res) => {
 
@@ -40,10 +44,10 @@ router.post("/:event_id/edit", (req, res) => {
 
 router.post("/create", (req, res) => {
 
-    const { title, text, imgURL, location } = req.body
+    const { title, description, imgURL, location } = req.body
 
     Event
-        .create({ title, text, imgURL, location })
+        .create({ title, description, imgURL, location })
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })

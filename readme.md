@@ -4,6 +4,7 @@
 A brief description of what this project does and who it's for
 
 
+
 ## API Reference
 
 #### Client
@@ -11,8 +12,8 @@ A brief description of what this project does and who it's for
 | Type | Endpoint | Description |
 |-------|-------|-------|
 | /get | / | Landing page |
-| /get | /contact | Page to contact |
-| /post | /contact | Send a message to the admin |
+| /get | /contact | Contact page |
+| /post | /contact | Contact admin |
 | /get | /about-us | About us |
 | /get | /projects | List of projects |
 | /get | /sponsors | Sponsors |
@@ -34,21 +35,21 @@ A brief description of what this project does and who it's for
 | /get | /profile/:id/edit | User profile form render |
 | /post | /profile/:id/edit | User profile form post |
 o| /post | /profile/:id/edit | To do ADMIN |
-| /post | /profile/:id/delete | Delete a profile |
+| /post | /profile/:id/delete | Delete a profile (for ADMIN) |
 o| /get | /userlist | List of users |
 o| /post | /logout | Log out from session |
 | /get | /events | List of events |
-| /post | /events/new | New event form post |
-| /get | /events/:id | Access to a event |
-| /get | /events/:id/edit | Edit a event form render |
-| /post | /events/:id/edit | Edit a event form post |
-| /post | /events/:id/delete | Delete a event |
-| /post | /events/:id/join | Join to a event |
+| /post | /events/create | New event form post |
+| /get | /events/:id | Access an event |
+| /get | /events/:id/edit | Edit an event form render |
+| /post | /events/:id/edit | Edit an event form post |
+| /post | /events/:id/delete | Delete an event |
+| /post | /events/:id/join | Join a event |
 | /get | /news | List of news |
 | /post | /news/create | Create a new form post |
-| /get | /news/:id | Access to a new |
-| /get | /news/:id/edit | Edit a new form render |
-| /post | /news/:id/edit | Edit a new form post |
-| /post | /news/:id/delete | Delete a new |
-| /post | /news/:id/comment | Comment a new |
-| /post | /news/:id/comment/delete | Delete a comment on a new |
+| /get | /news/:id | Access specific news |
+| /get | /news/:id/edit | Edit news form render |
+| /post | /news/:id/edit | Edit news form post |
+| /post | /news/:id/delete | Delete news |
+| /post | /news/:id/comment | Comment news |
+| /post | /news/:id/comment/delete | Delete a comment on news |
