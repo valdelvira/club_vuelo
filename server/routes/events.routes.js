@@ -69,6 +69,20 @@ router.post("/:event_id/join", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
+<<<<<<< HEAD
+=======
+router.post("/:event_id/comment", (req, res) => {
+
+    const { event_id } = req.params
+    const { comment, user_id } = req.body
+
+    Comment
+        .create({ event_id, comment, user_id })
+        .then(response => res.json(response))
+        .catch(err => res.status(500).json(err))
+})
+
+>>>>>>> refs/remotes/origin/main
 router.post("/:event_id/comment/delete", (req, res) => {
 
     const { event_id } = req.params

@@ -21,10 +21,9 @@ const userSchema = new Schema(
     },
     nif: {
       type: String,
-      required: true,
       unique: true,
       trim: true,
-      lowercase: true,
+      uppercase: true,
       required: [true, 'El DNI/NIE no es válido'],
       validate: function (email) {
         return /^(((([X-Z])|([LM])){1}([-]?)((\d){7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z])))$/.test(email)
