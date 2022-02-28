@@ -38,6 +38,16 @@ router.post("/profile/:user_id/delete", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
+router.post("/profile", (req, res) => {
+
+    const { username, name, lastname, nif, flightHours, aboutMe, password, imageURL, birth } = req.params
+
+    User
+        .create({ username, name, lastname, nif, flightHours, aboutMe, password, imageURL, birth })
+        .then(response => res.json(response))
+        .catch(err => res.status(500).json(err))
+})
+
 
 
 

@@ -1,7 +1,7 @@
 
 # Club de vuelo
 
-A new project for manage
+A brief description of what this project does and who it's for
 
 
 ## API Reference
@@ -33,7 +33,10 @@ A new project for manage
 | /get | /profile/:id | User profile |
 | /get | /profile/:id/edit | User profile form render |
 | /post | /profile/:id/edit | User profile form post |
-| /post | /profile//:id/delete | Delete a profile |
+o| /post | /profile/:id/edit | To do ADMIN |
+| /post | /profile/:id/delete | Delete a profile |
+o| /get | /userlist | List of users |
+o| /post | /logout | Log out from session |
 | /get | /events | List of events |
 | /post | /events/new | New event form post |
 | /get | /events/:id | Access to a event |
@@ -41,8 +44,6 @@ A new project for manage
 | /post | /events/:id/edit | Edit a event form post |
 | /post | /events/:id/delete | Delete a event |
 | /post | /events/:id/join | Join to a event |
-| /post | /events/:id/comment | Comment a event |
-| /post | /events/:id/comment/delete | Delete a comment on a event |
 | /get | /news | List of news |
 | /post | /news/create | Create a new form post |
 | /get | /news/:id | Access to a new |
@@ -51,4 +52,3 @@ A new project for manage
 | /post | /news/:id/delete | Delete a new |
 | /post | /news/:id/comment | Comment a new |
 | /post | /news/:id/comment/delete | Delete a comment on a new |
-

@@ -1,6 +1,6 @@
 const router = require("express").Router()
 const New = require('../models/New.model')
-const NewsComment = require('../models/NewsComment.model')
+const NewsComment = require('../models/Comment.model')
 
 router.get("/news/", (req, res) => {
 

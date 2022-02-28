@@ -14,20 +14,20 @@ const userSchema = new Schema(
       minlength: 2,
       maxlength: 25
     },
-    surname: {
+    lastname: {
       type: String,
       minlength: 2,
       maxlength: 35
     },
-    dni: {
+    nif: {
       type: String,
       required: true,
       unique: true,
       trim: true,
       lowercase: true,
-      required: [true, 'El DNI no es válido'],
+      required: [true, 'El DNI/NIE no es válido'],
       validate: function (email) {
-        return /^([a-z]{3}[0-9]{6}[a-z])$/.test(email)
+        return /^(((([X-Z])|([LM])){1}([-]?)((\d){7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z])))$/.test(email)
       }
     },
     flightHours: {
@@ -40,9 +40,9 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    event: [{
+    events: [{
       type: Schema.Types.ObjectId,
-      ref: 'User'
+      ref: 'Event'
     }],
     role: {
       type: String,

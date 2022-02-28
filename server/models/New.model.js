@@ -8,7 +8,7 @@ const newSchema = new Schema(
       minlength: 5,
       maxlength: 50
     },
-    text: {
+    description: {
       type: String,
       required: true,
       minlength: 2
@@ -16,7 +16,7 @@ const newSchema = new Schema(
     imgURL: {
       type: String
     },
-    user: {
+    owner: {
       type: Schema.Types.ObjectId,
       ref: 'User'
     }

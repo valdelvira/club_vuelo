@@ -8,7 +8,7 @@ const eventSchema = new Schema(
       minlength: 5,
       maxlength: 50
     },
-    text: {
+    description: {
       type: String,
       required: true,
       minlength: 2
@@ -22,12 +22,8 @@ const eventSchema = new Schema(
     },
     comments: [{
       type: Schema.Types.ObjectId,
-      ref: 'EventComment'
+      ref: 'Comment'
     }],
-    creator: {
-      type: Schema.Types.ObjectId,
-      ref: 'User'
-    },
     location: {
       type: {
         type: String
