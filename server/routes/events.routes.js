@@ -1,6 +1,10 @@
 const router = require("express").Router()
 const Event = require('../models/Event.model')
+<<<<<<< HEAD
 const Comment = require("./../models/Comment.model")
+=======
+const Comment = require('../models/Comment.model')
+>>>>>>> b4252312f4c668c761a9116ee1cc5c427634f22f
 
 router.get("/", (req, res) => {
 
