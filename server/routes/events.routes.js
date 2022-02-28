@@ -1,8 +1,8 @@
 const router = require("express").Router()
 const Event = require('../models/Event.model')
-const EventComment = require('../models/EventComment.model')
+const Comment = require("./../models/Comment.model")
 
-router.get("/events/", (req, res) => {
+router.get("/", (req, res) => {
 
     Event
         .find()
@@ -10,7 +10,7 @@ router.get("/events/", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.get("/events/:event_id", (req, res) => {
+router.get("/:event_id", (req, res) => {
     const { event_id } = req.params
     Event
         .findById(event_id)
@@ -18,7 +18,7 @@ router.get("/events/:event_id", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.get("/events/:event_id/edit", (req, res) => {
+router.get("/:event_id/edit", (req, res) => {
     const { event_id } = req.params
 
     Event
@@ -27,7 +27,7 @@ router.get("/events/:event_id/edit", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/events/:event_id/edit", (req, res) => {
+router.post("/:event_id/edit", (req, res) => {
 
     const { event_id } = req.params
     const { title, text, imgURL, location } = req.body
@@ -38,17 +38,17 @@ router.post("/events/:event_id/edit", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/events/create", (req, res) => {
+router.post("/create", (req, res) => {
 
-    const { title, text, imgURL, location } = req.body
+    const { title, description, imgURL, location } = req.body
 
     Event
-        .create({ title, text, imgURL, location })
+        .create({ title, description, imgURL, location })
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/events/:event_id/delete", (req, res) => {
+router.post("/:event_id/delete", (req, res) => {
 
     const { event_id } = req.params
 
@@ -58,7 +58,7 @@ router.post("/events/:event_id/delete", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/events/:event_id/join", (req, res) => {
+router.post("/:event_id/join", (req, res) => {
 
     const { event_id } = req.params
     const { user_id } = req.body
@@ -69,22 +69,22 @@ router.post("/events/:event_id/join", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/events/:event_id/comment", (req, res) => {
+router.post("/:event_id/comment", (req, res) => {
 
     const { event_id } = req.params
     const { comment, user_id } = req.body
 
-    EventComment
+    Comment
         .create({ event_id, comment, user_id })
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/events/:event_id/comment/delete", (req, res) => {
+router.post("/:event_id/comment/delete", (req, res) => {
 
     const { event_id } = req.params
 
-    EventComment
+    Comment
         .findByIdAndDelete(event_id)
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
