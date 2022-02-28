@@ -73,6 +73,8 @@ router.post("/:event_id/join", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
+<<<<<<< HEAD
+=======
 router.post("/:event_id/comment", (req, res) => {
 
     const { event_id } = req.params
@@ -84,6 +86,7 @@ router.post("/:event_id/comment", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
+>>>>>>> refs/remotes/origin/main
 router.post("/:event_id/comment/delete", (req, res) => {
 
     const { event_id } = req.params

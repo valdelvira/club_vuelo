@@ -55,10 +55,10 @@ router.post("/create", (req, res) => {
 router.post("/:new_id/edit", (req, res) => {
 
     const { new_id } = req.params
-    const { comment } = req.body
+    const { title, description, imgURL, comment } = req.body
 
     New
-        .findByIdAndUpdate(new_id, { comment })
+        .findByIdAndUpdate(new_id, { title, description, imgURL, comment })
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
@@ -77,16 +77,24 @@ router.post("/:new_id/delete", (req, res) => {
 router.post("/:new_id/comment", (req, res) => {
 =======
 router.post("/comment/:new_id", (req, res) => {
+<<<<<<< HEAD
 >>>>>>> b4252312f4c668c761a9116ee1cc5c427634f22f
+=======
+>>>>>>> refs/remotes/origin/main
+>>>>>>> 41859f1ec6760b29dd06eb449c04c806651b7dc0
 
     const { new_id } = req.params
     const { comment, owner } = req.body
 
     Comment
+<<<<<<< HEAD
+        .create({ comment, user_id, new_id })
+=======
         .create({ comment, owner, new_id })
         .then(response => {
             New.findByIdAndUpdate(new_id, { $push: { comments: response._id } })
         })
+>>>>>>> refs/remotes/origin/main
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })

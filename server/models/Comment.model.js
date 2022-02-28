@@ -20,4 +20,8 @@ const commentSchema = new Schema(
 
 const Comment = model("Comment", commentSchema)
 
+<<<<<<< HEAD
+module.exports = Comment.model
+=======
 module.exports = Comment
+>>>>>>> refs/remotes/origin/main
