@@ -1,8 +1,8 @@
 const router = require("express").Router()
 const New = require('../models/New.model')
-const NewsComment = require('../models/Comment.model')
+const Comment = require('../models/Comment.model')
 
-router.get("/news/", (req, res) => {
+router.get("/", (req, res) => {
 
     New
         .find()
@@ -10,7 +10,7 @@ router.get("/news/", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.get("/news/:new_id", (req, res) => {
+router.get("/:new_id", (req, res) => {
     const { new_id } = req.params
     New
         .findById(new_id)
@@ -18,17 +18,8 @@ router.get("/news/:new_id", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.get("/news/create", (req, res) => {
-    const { event_id } = req.params
-
-    New
-        .create(new_id)
-        .then(response => res.json(response))
-        .catch(err => res.status(500).json(err))
-})
-
-router.get("/news/:new_id/edit", (req, res) => {
-    const { event_id } = req.params
+router.get("/:new_id/edit", (req, res) => {
+    const { new_id } = req.params
 
     New
         .findById(new_id)
@@ -36,28 +27,28 @@ router.get("/news/:new_id/edit", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/news/create", (req, res) => {
+router.post("/create", (req, res) => {
 
-    const { title, text, imgURL } = req.body
+    const { title, description, imgURL } = req.body
 
     New
-        .create({ title, text, imgURL })
+        .create({ title, description, imgURL })
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/news/:new_id/edit", (req, res) => {
+router.post("/:new_id/edit", (req, res) => {
 
     const { new_id } = req.params
-    const { comment } = req.body
+    const { title, description, imgURL, comment } = req.body
 
     New
-        .findByIdAndUpdate(new_id, { comment })
+        .findByIdAndUpdate(new_id, { title, description, imgURL, comment })
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/news/:new_id/delete", (req, res) => {
+router.post("/:new_id/delete", (req, res) => {
 
     const { new_id } = req.params
 
@@ -67,22 +58,22 @@ router.post("/news/:new_id/delete", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/news/:new_id/comment", (req, res) => {
+router.post("/:new_id/comment", (req, res) => {
 
     const { new_id } = req.params
     const { comment, user_id } = req.body
 
-    NewsComment
+    Comment
         .create({ comment, user_id, new_id })
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/news/:comment_id/comment/delete", (req, res) => {
+router.post("/:comment_id/comment/delete", (req, res) => {
 
     const { comment_id } = req.params
 
-    NewsComment
+    Comment
         .findByIdAndDelete(comment_id)
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
