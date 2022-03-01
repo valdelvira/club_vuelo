@@ -6,8 +6,8 @@ import Navigator from './components/Navigator/Navigator'
 function App() {
   return (
     <div className="App">
-      <IndexPage />
       <Navigator />
+      <IndexPage />
       <Footer />
     </div>
   )

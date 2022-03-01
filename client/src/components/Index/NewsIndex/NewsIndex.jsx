@@ -1,23 +1,15 @@
-import { Card, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-
+import NewsCard from "../../News/NewsCard/NewsCard"
+import { Row, Col } from "react-bootstrap"
 
 const NewsIndex = () => {
     return (
-        <>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
-                <Card.Body>
-                    <Card.Title>Noticia</Card.Title>
-                    <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Más info</Button>
-                </Card.Body>
-            </Card>
-
-        </>
+        <section>
+            <Row>
+                <Col md={4}><NewsCard></NewsCard></Col>
+                <Col md={4}><NewsCard></NewsCard></Col>
+                <Col md={4}><NewsCard></NewsCard></Col>
+            </Row>
+        </section>
     )
 }
 export default NewsIndex
