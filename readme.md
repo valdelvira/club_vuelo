@@ -21,6 +21,7 @@ A brief description of what this project does and who it's for
 | /get | /meteo | Access to meteo |
 | /get | /events/new | New event form render |
 | /get | /news/create | Create a new form render |
+o| /post | /logout | Log out from session |
 
 
 #### Server
@@ -37,7 +38,6 @@ A brief description of what this project does and who it's for
 o| /post | /profile/:id/edit | To do ADMIN |
 | /post | /profile/:id/delete | Delete a profile (for ADMIN) |
 o| /get | /userlist | List of users |
-o| /post | /logout | Log out from session |
 | /get | /events | List of events |
 | /post | /events/create | New event form post |
 | /get | /events/:id | Access an event |

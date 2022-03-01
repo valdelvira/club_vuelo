@@ -1,8 +1,9 @@
 const express = require("express")
 const bcrypt = require('bcryptjs')
 const User = require("../models/User.model")
-//const jwt = require('jsonwebtoken')
-//const { isAuthenticated } = require('./../middlewares/jwt.middleware')
+const jwt = require('jsonwebtoken')
+const transporter = require('./../config/transporter.config')
+const { isAuthenticated } = require('./../middlewares/jwt.middleware')
 
 const router = express.Router()
 const saltRounds = 10
@@ -53,10 +54,6 @@ router.post('/signup', (req, res) => {
         })
 })
 
-
-
-
-
 router.post('/login', (req, res) => {
     const { email, password } = req.body;
 
@@ -83,7 +80,7 @@ router.post('/login', (req, res) => {
                 const authToken = jwt.sign(
                     payload,
                     process.env.TOKEN_SECRET,
-                    { algorithm: 'HS256', expiresIn: "6h" }
+                    { algorithm: 'HS256', expiresIn: "3h" }
                 )
 
                 res.status(200).json({ authToken });
@@ -98,10 +95,25 @@ router.post('/login', (req, res) => {
         })
 })
 
+router.get('/verify', isAuthenticated, (req, res) => {
+    res.status(200).json(req.payload)
+})
 
-// router.get('/verify', isAuthenticated, (req, res, next) => {
-//     res.status(200).json(req.payload)
-// })
+router.post('/contact', (req, res) => {
+    const { email, message } = req.body
+
+    transporter.sendMail({
+        from: '"Club de Vuelo UPM Akaflieg Madrid" <clubvuelo.aeroespacial@upm.es>',
+        to: 'egovaldel@gmail.com',
+        subject: 'Nuevo mensaje desde el formulario de contacto.',
+        text: message,
+        html: `<h2>Nuevo mensaje de contacto</h2>
+                <p>Ha recibido un nuevo mensaje de: <b>${email}</b> </p>
+                <p>Mensaje: ${message}</p>`
+    })
+        .then(info => res.send(info))
+        .catch(error => console.log(error))
+})
 
 
 module.exports = router
