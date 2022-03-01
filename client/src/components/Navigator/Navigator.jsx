@@ -3,8 +3,8 @@ import { Navbar, Container, Nav, Image, NavDropdown } from 'react-bootstrap'
 
 const Navigator = () => {
     return (
-        <Navbar bg="light" variant="light" className='navigator'>
-            <Container>
+        <Navbar bg="light" variant="light" className='navigator' >
+            <Container >
                 <Image src='../../../logo.png' />
                 <Nav>
                     <NavDropdown title="Akaflieg" id="navbarScrollingDropdown">

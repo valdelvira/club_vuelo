@@ -1,10 +1,6 @@
 const router = require("express").Router()
 const Event = require('../models/Event.model')
-<<<<<<< HEAD
-const Comment = require("./../models/Comment.model")
-=======
 const Comment = require('../models/Comment.model')
->>>>>>> b4252312f4c668c761a9116ee1cc5c427634f22f
 
 router.get("/", (req, res) => {
 
@@ -69,30 +65,6 @@ router.post("/:event_id/join", (req, res) => {
 
     Event
         .findByIdAndUpdate(event_id, { $push: { participants: user_id } })
-        .then(response => res.json(response))
-        .catch(err => res.status(500).json(err))
-})
-
-<<<<<<< HEAD
-=======
-router.post("/:event_id/comment", (req, res) => {
-
-    const { event_id } = req.params
-    const { comment, user_id } = req.body
-
-    Comment
-        .create({ event_id, comment, user_id })
-        .then(response => res.json(response))
-        .catch(err => res.status(500).json(err))
-})
-
->>>>>>> refs/remotes/origin/main
-router.post("/:event_id/comment/delete", (req, res) => {
-
-    const { event_id } = req.params
-
-    Comment
-        .findByIdAndDelete(event_id)
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
