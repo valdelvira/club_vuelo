@@ -1,6 +1,7 @@
 import './Navigator.css'
 import { Navbar, Container, Nav, Image, NavDropdown, Form, Button, Modal } from 'react-bootstrap'
 import { useState, useContext } from "react"
+import { NavLink } from 'react-router-dom'
 import LoginForm from '../LoginForm/LoginForm'
 const Navigator = () => {
 
@@ -10,9 +11,11 @@ const Navigator = () => {
     const handleModalOpen = () => setShowModal(true)
     return (
         <>
-            <Navbar bg="light" variant="light" className='navigator'>
+            <Navbar bg="light" variant="light" className='navigator' sticky='top'>
                 <Container>
+                    <NavLink to="/">
                     <Image src='../../../logo.png' />
+                    </NavLink>
                     <Nav>
                         <NavDropdown title="Akaflieg" id="navbarScrollingDropdown">
                             <NavDropdown.Item href="#action3">Quiénes somos</NavDropdown.Item>
@@ -24,7 +27,9 @@ const Navigator = () => {
                         <Nav.Link href="#features">Meteo</Nav.Link>
                         <Nav.Link href="#pricing">Noticias</Nav.Link>
                         <Nav.Link href="#pricing">Eventos</Nav.Link>
-                        <Nav.Link href="#pricing">Registrarse</Nav.Link>
+                        <NavLink to="/signup">
+                        <Nav.Link as="span" >Registrarse</Nav.Link>
+                        </NavLink>
                         <Nav.Link href="#pricing" onClick={handleModalOpen} > Iniciar sesión</Nav.Link>
                     </Nav>
                 </Container>

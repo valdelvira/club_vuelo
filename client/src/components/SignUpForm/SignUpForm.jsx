@@ -1,10 +1,10 @@
 import { useState, useContext } from 'react'
-import { Form, Button, Row } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
 import authService from '../../services/auth.service'
 import { useNavigate } from 'react-router-dom'
-import './SignUp.css'
+import './SignUpForm.css'
 
-const SignUp = () => {
+const SignUpForm = () => {
 
     const [signUpForm, setSignUpForm] = useState({
         username: "",
@@ -102,4 +102,4 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+export default SignUpForm
