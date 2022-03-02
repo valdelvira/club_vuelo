@@ -66,9 +66,9 @@ const EventForm = () => {
                 <Form.Control type="text" name="description" value={EventForm.description} onChange={handleInputChange} />
             </Form.Group>
 
-            <Form.Group controlId="formFile" className="mb-3">
-                <Form.Label>Foto de perfil</Form.Label>
-                <Form.Control type="file" name='imageUrl' onChange={uploadEventImage} />
+            <Form.Group controlId="formFile" className="mb-4">
+                <Form.Label>Foto de evento</Form.Label>
+                <Form.Control type="file" name='imgUrl' onChange={uploadEventImage} />
             </Form.Group>
 
             <Button variant="dark" type="submit" style={{ width: '100%' }}>Publicar</Button>
