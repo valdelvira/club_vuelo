@@ -2,7 +2,6 @@ const express = require("express")
 const bcrypt = require('bcryptjs')
 const User = require("../models/User.model")
 const jwt = require('jsonwebtoken')
-const transporter = require('./../config/transporter.config')
 const { isAuthenticated } = require('./../middlewares/jwt.middleware')
 
 const router = express.Router()
@@ -97,22 +96,6 @@ router.post('/login', (req, res) => {
 
 router.get('/verify', isAuthenticated, (req, res) => {
     res.status(200).json(req.payload)
-})
-
-router.post('/contact', (req, res) => {
-    const { email, message } = req.body
-
-    transporter.sendMail({
-        from: '"Club de Vuelo UPM Akaflieg Madrid" <clubvuelo.aeroespacial@upm.es>',
-        to: 'egovaldel@gmail.com',
-        subject: 'Nuevo mensaje desde el formulario de contacto.',
-        text: message,
-        html: `<h2>Nuevo mensaje de contacto</h2>
-                <p>Ha recibido un nuevo mensaje de: <b>${email}</b> </p>
-                <p>Mensaje: ${message}</p>`
-    })
-        .then(info => res.send(info))
-        .catch(error => console.log(error))
 })
 
 

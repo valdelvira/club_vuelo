@@ -24,7 +24,7 @@ const Navigator = () => {
                             <NavDropdown.Item href="#action4">Proyectos</NavDropdown.Item>
                             <NavDropdown.Item href="#action5">Patrocinadores</NavDropdown.Item>
                             <NavDropdown.Item href="#action5">Precios</NavDropdown.Item>
-                            <NavDropdown.Item href="#action5">Contacto</NavDropdown.Item>
+                            <NavDropdown.Item href="/contact">Contacto</NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link href="#features">Meteo</Nav.Link>
                         <Nav.Link href="#pricing">Noticias</Nav.Link>
