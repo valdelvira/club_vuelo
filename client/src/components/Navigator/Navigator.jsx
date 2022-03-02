@@ -14,7 +14,7 @@ const Navigator = () => {
             <Navbar bg="light" variant="light" className='navigator' sticky='top'>
                 <Container>
                     <NavLink to="/">
-                    <Image src='../../../logo.png' />
+                        <Image src='../../../logo.png' />
                     </NavLink>
                     <Nav>
                         <NavDropdown title="Akaflieg" id="navbarScrollingDropdown">
@@ -28,7 +28,7 @@ const Navigator = () => {
                         <Nav.Link href="#pricing">Noticias</Nav.Link>
                         <Nav.Link href="#pricing">Eventos</Nav.Link>
                         <NavLink to="/signup">
-                        <Nav.Link as="span" >Registrarse</Nav.Link>
+                            <Nav.Link as="span" >Registrarse</Nav.Link>
                         </NavLink>
                         <Nav.Link href="#pricing" onClick={handleModalOpen} > Iniciar sesión</Nav.Link>
                     </Nav>
@@ -40,7 +40,7 @@ const Navigator = () => {
                     <Modal.Title>Formulario de login</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <LoginForm />
+                    <LoginForm closeModal={handleModalClose} />
                 </Modal.Body>
             </Modal>
 
