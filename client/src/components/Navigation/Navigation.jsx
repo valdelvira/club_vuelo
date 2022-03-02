@@ -1,6 +1,6 @@
 import './Navigation.css'
-import { Navbar, Container, Nav, Image, NavDropdown, Form, Button, Modal } from 'react-bootstrap'
-import { useState, useContext } from "react"
+import { Navbar, Container, Nav, Image, NavDropdown, Modal } from 'react-bootstrap'
+import { useState } from "react"
 import { NavLink } from 'react-router-dom'
 import LoginForm from '../LoginForm/LoginForm'
 const Navigation = () => {
@@ -20,25 +20,6 @@ const Navigation = () => {
                         <NavDropdown title="Akaflieg Madrid" id="navbarScrollingDropdown">
                             <NavLink to="/about-us">
                                 <NavDropdown.Item as="span">Quiénes somos</NavDropdown.Item>
-<<<<<<< HEAD:client/src/components/Navigator/Navigator.jsx
-=======
-                            </NavLink>
-
-                            <NavLink to="/projects">
-                                <NavDropdown.Item as="span">Proyectos</NavDropdown.Item>
-                            </NavLink>
-
-                            <NavLink to="/sponsors">
-                                <NavDropdown.Item as="span">Patrocinadores</NavDropdown.Item>
-                            </NavLink>
-
-                            <NavLink to="/prices">
-                                <NavDropdown.Item as="span">Precios</NavDropdown.Item>
-                            </NavLink>
-
-                            <NavLink to="/contact">
-                                <NavDropdown.Item as="span">Contacto</NavDropdown.Item>
->>>>>>> b95a468b868f51a19bfbbde8e296af107075f3db:client/src/components/Navigation/Navigation.jsx
                             </NavLink>
                         </NavDropdown>
 
