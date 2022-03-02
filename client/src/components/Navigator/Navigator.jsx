@@ -19,7 +19,7 @@ const Navigator = () => {
                     <Nav>
                         <NavDropdown title="Akaflieg Madrid" id="navbarScrollingDropdown">
                             <NavLink to="/about-us">
-                            <NavDropdown.Item as="span">Quiénes somos</NavDropdown.Item>
+                                <NavDropdown.Item as="span">Quiénes somos</NavDropdown.Item>
                             </NavLink>
                             <NavDropdown.Item href="#action4">Proyectos</NavDropdown.Item>
                             <NavDropdown.Item href="#action5">Patrocinadores</NavDropdown.Item>
@@ -32,7 +32,7 @@ const Navigator = () => {
                         <NavLink to="/signup">
                             <Nav.Link as="span" >Registrarse</Nav.Link>
                         </NavLink>
-                        <Nav.Link href="#pricing" onClick={handleModalOpen} > Iniciar sesión</Nav.Link>
+                        <Nav.Link onClick={handleModalOpen} > Iniciar sesión</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar >

@@ -1,8 +1,13 @@
+import { useContext } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import ContactForm from '../../components/ContactForm/ContactForm'
 import Map from "../../components/Map/Map"
+import { AuthContext } from './../../context/auth.context'
 
 function ContactPage(){
+
+    //const { isLoggedIn } = useContext(AuthContext)
+
 
     const locationSede = {
         address: 'Plaza del Cardenal Cisneros 3, 28040 (Madrid)',
@@ -19,13 +24,19 @@ function ContactPage(){
     return(
         <Container>
             <h1>Contacta con nosotros</h1>
+            {
+                    // isLoggedIn && <span>+****</span>
+                }
             <Row  className="justify-content-md-center">
                 <Col md={6}>
                     <p>Si tienes cualquier duda, mándanos un e-mail y trataremos de responderte lo antes posible.</p>
                     <ContactForm/>
                 </Col>
-                <Col md={6}>
+            </Row>
+            <Row  className="justify-content-md-center">
+
                 <h2>¿Dónde estamos?</h2>
+                <Col md={6}>
                     <section>
                         Lunes – Viernes
                         Pza. Cardenal Cisneros, 3, 28040 Madrid
@@ -34,7 +45,10 @@ function ContactPage(){
                         Líneas EMT: 82, 132, 46, 83, 133, 160, 161, 162, G y U
                         Nos puedes visitar en el local 164 (debajo de cafetería).
                         <Map  location={ locationSede } zoomLevel={17} />
-                        <hr/>
+                    </section>
+                </Col>
+                <Col md={6}>
+                    <section>
                         Fines de semana
                         Aeródromo Municipal, Ctra. el Romeral, s/n, 45870 Lillo, Toledo
                         Sin embargo, nuestros aviones están en el aeródromo de Lillo, Toledo, a una hora aproximadamente desde Madrid. Es aquí donde el club realiza toda su actividad de vuelo y la mayor parte de las tareas de mantenimiento.

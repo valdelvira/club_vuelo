@@ -5,7 +5,7 @@ import AboutUs from "../../components/AboutUs/AboutUs"
 const AboutUsPage = () => {
     return (
         <Container>
-        <AboutUs/>
+            <AboutUs/>
         </Container>
     )
 }

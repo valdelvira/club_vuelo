@@ -13,6 +13,7 @@ router.get("/", (req, res) => {
 
 router.get("/:new_id", (req, res) => {
     const { new_id } = req.params
+
     New
         .findById(new_id)
         .then(response => res.json(response))
@@ -38,7 +39,7 @@ router.post("/create", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/:new_id/edit", (req, res) => {
+router.put("/:new_id/edit", (req, res) => {
 
     const { new_id } = req.params
     const { title, description, imgURL, comment } = req.body
@@ -49,7 +50,7 @@ router.post("/:new_id/edit", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/:new_id/delete", (req, res) => {
+router.delete("/:new_id/delete", (req, res) => {
 
     const { new_id } = req.params
 
@@ -62,7 +63,7 @@ router.post("/:new_id/delete", (req, res) => {
 router.post("/comment/:new_id", (req, res) => {
 
     const { new_id } = req.params
-    const { comment, owner } = req.body
+    const { comment, owner } = req.body  // isAuthenticated
 
     Comment
         .create({ comment, owner, new_id })
@@ -73,7 +74,7 @@ router.post("/comment/:new_id", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/:comment_id/comment/delete", (req, res) => {
+router.delete("/:comment_id/comment/delete", (req, res) => {
 
     const { comment_id } = req.params
 
@@ -82,9 +83,6 @@ router.post("/:comment_id/comment/delete", (req, res) => {
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
-
-
-
 
 
 module.exports = router

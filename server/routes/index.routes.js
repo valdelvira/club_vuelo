@@ -4,6 +4,6 @@ router.use("/user", require('./user.routes'))
 router.use("/events", require('./events.routes'))
 router.use("/news", require('./news.routes'))
 router.use("/auth", require('./auth.routes'))
-router.use("/", require('./base.routes'))
+router.use("/", require('./contact.routes'))
 
 module.exports = router
