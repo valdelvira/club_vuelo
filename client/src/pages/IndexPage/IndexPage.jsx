@@ -3,8 +3,12 @@ import NewsIndex from "../../components/Index/NewsIndex/NewsIndex"
 import PricesIndex from "../../components/Index/PricesIndex/PricesIndex"
 import UserMessage from "../../components/UserMessage/UserMessage"
 import { Container } from 'react-bootstrap'
+import ContactPage from "../ContactPage/ContactPage"
+
 
 const IndexPage = () => {
+
+
     return (
 
         <Container>
@@ -12,6 +16,7 @@ const IndexPage = () => {
             <HeaderIndex />
             <NewsIndex />
             <PricesIndex />
+            <ContactPage/>
         </Container>
     )
 }
