@@ -4,6 +4,7 @@ import authService from '../../services/auth.service'
 import { useNavigate } from 'react-router-dom'
 import { MessageContext } from '../../context/userMessage.context'
 import './SignUpForm.css'
+import uploadService from '../../services/upload.service'
 
 const SignUpForm = () => {
 
@@ -16,7 +17,7 @@ const SignUpForm = () => {
         aboutMe: "",
         password: "",
         email: "",
-        imageUrl: "",
+        imageURL: "",
         birth: ""
     })
 
@@ -30,6 +31,19 @@ const SignUpForm = () => {
             ...signUpForm,
             [name]: value
         })
+    }
+
+    const uploadProfileImage = e => {
+
+        const uploadData = new FormData()
+        uploadData.append('imageData', e.target.files[0])
+
+        uploadService
+            .uploadImage(uploadData)
+            .then(({ data }) => {
+                setSignUpForm({ ...signUpForm, imageURL: data.cloudinary_url })
+            })
+            .catch(err => console.log(err))
     }
 
     function handleSubmit(e) {
@@ -92,7 +106,7 @@ const SignUpForm = () => {
 
                 <Form.Group controlId="formFile" className="mb-3">
                     <Form.Label>Foto de perfil</Form.Label>
-                    <Form.Control type="file" name='imageUrl' value={signUpForm.imageUrl} onChange={handleInputChange} />
+                    <Form.Control type="file" name='imageUrl' onChange={uploadProfileImage} />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
