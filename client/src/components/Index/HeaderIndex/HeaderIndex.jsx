@@ -1,7 +1,7 @@
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './HederIndex.css'
-
+import ContactPage from '../../../pages/ContactPage/ContactPage'
 
 const HeaderIndex = () => {
     return (
@@ -11,6 +11,7 @@ const HeaderIndex = () => {
             <Button>
                 <p>Saber más</p>
             </Button>
+                        
         </section>
     )
 }

@@ -1,19 +1,30 @@
 import { useState } from "react"
 import { Button, Form } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
+import baseService from "../../services/base.service"
 
 function ContactForm() {
-    const [ email, message ] = useState({
+    const [ contactForm, setContactForm ] = useState({
         email: '',
         message: ''
     })
     const navigate = useNavigate()
-    function handleSubmit(e){
-        e.preventDefault()
-        navigate('/')
+    
+    const handleInputChange = e => {
+        
+        const { name, value } = e.target
+            setContactForm({ ...contactForm, [name]: value })
     }
 
-
+    function handleSubmit(e){
+        e.preventDefault()
+        baseService
+            .contact(contactForm)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+        navigate('/')
+    }
+    
     return ( 
         <Form onSubmit={handleSubmit}>
             <Form.Group  className="mb-3">
@@ -22,7 +33,7 @@ function ContactForm() {
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Mensaje</Form.Label>
-                <Form.Control type="text" name="message" value={ contactForm.message} onChange={handleInputChange} />
+                <Form.Control as="textarea" name="message" style={{ height: '100px' }} value={ contactForm.message} onChange={handleInputChange} />
             </Form.Group>
             <Button type="submit"  style={{ width: '100%' }}>Enviar</Button>
 
