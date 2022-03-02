@@ -1,6 +1,7 @@
 import { useState, useContext } from "react"
 import { Form, Button, Modal } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
+import authService from "../../services/auth.service"
 
 
 const LoginForm = () => {
@@ -12,13 +13,15 @@ const LoginForm = () => {
 
     const navigate = useNavigate()
 
-    // const handleInputChange = e => {
-    //     const { name, value } = e.target
-    //     setLoginForm({
-    //         ...LoginForm,
-    //         [name]: value
-    //     })
-    // }
+    const handleInputChange = e => {
+        const { name, value } = e.target
+        setLoginForm({
+            ...LoginForm,
+            [name]: value
+        })
+    }
+
+    function handleInputChange()
 
     return (
         <Form >

@@ -9,6 +9,10 @@ class AuthService {
     signup(credentials) {
         return this.api.post('/signup', credentials)
     }
+
+    login(credentials) {
+        return this.api.post('/login', credentials)
+    }
 }
 
 const authService = new AuthService()
