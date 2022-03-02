@@ -3,11 +3,6 @@ import './AboutUsPage.css'
 
 const AboutUsPage = () => {
     return (
-<<<<<<< HEAD
-        <Container>
-            <AboutUs/>
-        </Container>
-=======
         <div className='aboutUs'>
             <Container>
                 <Row>
@@ -48,7 +43,6 @@ const AboutUsPage = () => {
                 «sin esperar nada a cambio».</p>
         </div >
 
->>>>>>> b95a468b868f51a19bfbbde8e296af107075f3db
     )
 }
 

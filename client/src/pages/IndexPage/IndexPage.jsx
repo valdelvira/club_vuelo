@@ -56,7 +56,6 @@ const IndexPage = () => {
                     </Col>
                 </Row>
             </section>
-            <ContactPage />
         </Container>
     )
 }

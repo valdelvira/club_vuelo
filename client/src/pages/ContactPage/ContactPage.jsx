@@ -1,12 +1,11 @@
-import { useContext } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import ContactForm from '../../components/ContactForm/ContactForm'
 import Map from "../../components/Map/Map"
-import { AuthContext } from './../../context/auth.context'
+
 
 function ContactPage(){
 
-    //const { isLoggedIn } = useContext(AuthContext)
+    
 
 
     const locationSede = {
@@ -24,9 +23,7 @@ function ContactPage(){
     return(
         <Container>
             <h1>Contacta con nosotros</h1>
-            {
-                    // isLoggedIn && <span>+****</span>
-                }
+        
             <Row  className="justify-content-md-center">
                 <Col md={6}>
                     <p>Si tienes cualquier duda, mándanos un e-mail y trataremos de responderte lo antes posible.</p>

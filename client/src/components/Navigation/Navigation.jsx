@@ -3,9 +3,13 @@ import { Navbar, Container, Nav, Image, NavDropdown, Form, Button, Modal } from 
 import { useState, useContext } from "react"
 import { NavLink } from 'react-router-dom'
 import LoginForm from '../LoginForm/LoginForm'
+import { AuthContext } from './../../context/auth.context'
+
+
 const Navigation = () => {
 
     const [showModal, setShowModal] = useState(false)
+    const { isLoggedIn, user, logOutUser } = useContext(AuthContext)
 
     const handleModalClose = () => setShowModal(false)
     const handleModalOpen = () => setShowModal(true)
@@ -20,8 +24,6 @@ const Navigation = () => {
                         <NavDropdown title="Akaflieg Madrid" id="navbarScrollingDropdown">
                             <NavLink to="/about-us">
                                 <NavDropdown.Item as="span">Quiénes somos</NavDropdown.Item>
-<<<<<<< HEAD:client/src/components/Navigator/Navigator.jsx
-=======
                             </NavLink>
 
                             <NavLink to="/projects">
@@ -38,7 +40,6 @@ const Navigation = () => {
 
                             <NavLink to="/contact">
                                 <NavDropdown.Item as="span">Contacto</NavDropdown.Item>
->>>>>>> b95a468b868f51a19bfbbde8e296af107075f3db:client/src/components/Navigation/Navigation.jsx
                             </NavLink>
                         </NavDropdown>
 
@@ -54,10 +55,23 @@ const Navigation = () => {
                             <Nav.Link as="span" >Eventos</Nav.Link>
                         </NavLink>
 
-                        <NavLink to="/signup">
-                            <Nav.Link as="span" >Registrarse</Nav.Link>
-                        </NavLink>
-                        <Nav.Link onClick={handleModalOpen} > Iniciar sesión</Nav.Link>
+                        
+                        {
+                            !isLoggedIn ?
+                                <>
+                                    <NavLink to="/signup">
+                                        <Nav.Link as="span" >Registrarse</Nav.Link>
+                                    </NavLink>
+                                    <Nav.Link onClick={handleModalOpen} > Iniciar sesión</Nav.Link>
+
+                                </>
+                            :
+                                <>
+                                    <Nav.Link as="span">¡Hola, {user?.username}!</Nav.Link>
+                                    <Nav.Link as="span" onClick={logOutUser}>Cerrar sesión</Nav.Link>
+                                </>
+                        }
+
                     </Nav>
                 </Container>
             </Navbar >

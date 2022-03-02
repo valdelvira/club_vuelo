@@ -1,18 +1,33 @@
 import { Form, Button } from 'react-bootstrap'
 import { useState, useContext } from 'react'
 import newsService from '../../../services/news.service'
+import uploadService from '../../../services/upload.service'
 
 function CreateNew() {
 
   const [ newsForm, setNewsForm ] = useState({
         title: '',
         description: '',
-        imageUrl: ''
+        imgURL: ''
     })
-      const handleInputChange = e => {
+
+    const handleInputChange = e => {
         
         const { name, value } = e.target
         setNewsForm({ ...newsForm, [name]: value })
+    }
+
+    const uploadProfileImage = e => {
+
+        const uploadData = new FormData()
+        uploadData.append('imageData', e.target.files[0])
+
+        uploadService
+            .uploadImage(uploadData)
+            .then(({ data }) => {
+                setNewsForm({ ...newsForm, imgURL: data.cloudinary_url })
+            })
+            .catch(err => console.log(err))
     }
 
     function handleSubmit(e){
@@ -38,7 +53,7 @@ function CreateNew() {
             </Form.Group>
             <Form.Group controlId="formFile" className="mb-3">
                 <Form.Label>Imagen de portada</Form.Label>
-                <Form.Control type="file" name='imageUrl' value={ newsForm.imageUrl } onChange={ handleInputChange } />
+                <Form.Control type="file" name='imageUrl' onChange={ uploadProfileImage } />
             </Form.Group>
             <Button variant="dark" type="submit" style={{ width: '100%' }}>Acceder</Button>
 
