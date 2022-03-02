@@ -1,9 +1,9 @@
-import './Navigator.css'
+import './Navigation.css'
 import { Navbar, Container, Nav, Image, NavDropdown, Form, Button, Modal } from 'react-bootstrap'
 import { useState, useContext } from "react"
 import { NavLink } from 'react-router-dom'
 import LoginForm from '../LoginForm/LoginForm'
-const Navigator = () => {
+const Navigation = () => {
 
     const [showModal, setShowModal] = useState(false)
 
@@ -19,20 +19,42 @@ const Navigator = () => {
                     <Nav>
                         <NavDropdown title="Akaflieg Madrid" id="navbarScrollingDropdown">
                             <NavLink to="/about-us">
-                            <NavDropdown.Item as="span">Quiénes somos</NavDropdown.Item>
+                                <NavDropdown.Item as="span">Quiénes somos</NavDropdown.Item>
                             </NavLink>
-                            <NavDropdown.Item href="#action4">Proyectos</NavDropdown.Item>
-                            <NavDropdown.Item href="#action5">Patrocinadores</NavDropdown.Item>
-                            <NavDropdown.Item href="#action5">Precios</NavDropdown.Item>
-                            <NavDropdown.Item href="/contact">Contacto</NavDropdown.Item>
+
+                            <NavLink to="/projects">
+                                <NavDropdown.Item as="span">Proyectos</NavDropdown.Item>
+                            </NavLink>
+
+                            <NavLink to="/sponsors">
+                                <NavDropdown.Item as="span">Patrocinadores</NavDropdown.Item>
+                            </NavLink>
+
+                            <NavLink to="/prices">
+                                <NavDropdown.Item as="span">Precios</NavDropdown.Item>
+                            </NavLink>
+
+                            <NavLink to="/contact">
+                                <NavDropdown.Item as="span">Contacto</NavDropdown.Item>
+                            </NavLink>
                         </NavDropdown>
-                        <Nav.Link href="#features">Meteo</Nav.Link>
-                        <Nav.Link href="#pricing">Noticias</Nav.Link>
-                        <Nav.Link href="#pricing">Eventos</Nav.Link>
+
+                        <NavLink to="/meteo">
+                            <Nav.Link as="span">Meteo</Nav.Link>
+                        </NavLink>
+
+                        <NavLink to="/news">
+                            <Nav.Link as="span">Noticias</Nav.Link>
+                        </NavLink>
+
+                        <NavLink to="/events">
+                            <Nav.Link as="span" >Eventos</Nav.Link>
+                        </NavLink>
+
                         <NavLink to="/signup">
                             <Nav.Link as="span" >Registrarse</Nav.Link>
                         </NavLink>
-                        <Nav.Link href="#pricing" onClick={handleModalOpen} > Iniciar sesión</Nav.Link>
+                        <Nav.Link onClick={handleModalOpen} > Iniciar sesión</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar >
@@ -50,4 +72,4 @@ const Navigator = () => {
     )
 }
 
-export default Navigator
+export default Navigation
