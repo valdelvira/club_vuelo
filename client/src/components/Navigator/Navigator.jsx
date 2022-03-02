@@ -17,8 +17,10 @@ const Navigator = () => {
                     <Image src='../../../logo.png' />
                     </NavLink>
                     <Nav>
-                        <NavDropdown title="Akaflieg" id="navbarScrollingDropdown">
-                            <NavDropdown.Item href="#action3">Quiénes somos</NavDropdown.Item>
+                        <NavDropdown title="Akaflieg Madrid" id="navbarScrollingDropdown">
+                            <NavLink to="/about-us">
+                            <NavDropdown.Item as="span">Quiénes somos</NavDropdown.Item>
+                            </NavLink>
                             <NavDropdown.Item href="#action4">Proyectos</NavDropdown.Item>
                             <NavDropdown.Item href="#action5">Patrocinadores</NavDropdown.Item>
                             <NavDropdown.Item href="#action5">Precios</NavDropdown.Item>

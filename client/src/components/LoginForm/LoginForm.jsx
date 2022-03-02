@@ -21,7 +21,6 @@ const LoginForm = () => {
         })
     }
 
-    function handleInputChange()
 
     return (
         <Form >
