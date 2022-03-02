@@ -3,9 +3,13 @@ import { Navbar, Container, Nav, Image, NavDropdown, Modal } from 'react-bootstr
 import { useState } from "react"
 import { NavLink } from 'react-router-dom'
 import LoginForm from '../LoginForm/LoginForm'
+import { AuthContext } from './../../context/auth.context'
+
+
 const Navigation = () => {
 
     const [showModal, setShowModal] = useState(false)
+    const { isLoggedIn, user, logOutUser } = useContext(AuthContext)
 
     const handleModalClose = () => setShowModal(false)
     const handleModalOpen = () => setShowModal(true)
@@ -35,10 +39,23 @@ const Navigation = () => {
                             <Nav.Link as="span" >Eventos</Nav.Link>
                         </NavLink>
 
-                        <NavLink to="/signup">
-                            <Nav.Link as="span" >Registrarse</Nav.Link>
-                        </NavLink>
-                        <Nav.Link onClick={handleModalOpen} > Iniciar sesión</Nav.Link>
+
+                        {
+                            !isLoggedIn ?
+                                <>
+                                    <NavLink to="/signup">
+                                        <Nav.Link as="span" >Registrarse</Nav.Link>
+                                    </NavLink>
+                                    <Nav.Link onClick={handleModalOpen} > Iniciar sesión</Nav.Link>
+
+                                </>
+                                :
+                                <>
+                                    <Nav.Link as="span">¡Hola, {user?.username}!</Nav.Link>
+                                    <Nav.Link as="span" onClick={logOutUser}>Cerrar sesión</Nav.Link>
+                                </>
+                        }
+
                     </Nav>
                 </Container>
             </Navbar >

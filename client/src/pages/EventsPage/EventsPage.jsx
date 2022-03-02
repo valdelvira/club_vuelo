@@ -1,23 +1,30 @@
-import EventCard from '../../components/Events/EventCard'
 import EventForm from "../../components/Events/EventForm"
-import { useState } from "react"
-import { Row, Modal, Container, Button } from "react-bootstrap"
+import { Row, Container } from "react-bootstrap"
+import EventList from '../../components/Events/EventList'
+import { useEffect, useState } from "react"
+import eventService from "../../services/event.service"
 
 const EventsPage = () => {
 
-    const [showModal, setShowModal] = useState(false)
+    const [events, setEvents] = useState([])
 
-    const handleModalClose = () => setShowModal(false)
-    const handleModalOpen = () => setShowModal(true)
+    useEffect(() => {
+        loadEvents()
+    }, [])
+
+    const loadEvents = () => {
+        eventService
+            .getEvents()
+            .then(({ data }) => setEvents(data))
+            .catch(err => console.log(err))
+    }
 
     return (
         <Container>
             <h1>Eventos</h1>
             <Button onClick={handleModalOpen}> Crear evento</Button>
             <Row>
-                <EventCard />
-                <EventCard />
-                <EventCard />
+                <EventList events={events} />
             </Row>
 
             <Modal>

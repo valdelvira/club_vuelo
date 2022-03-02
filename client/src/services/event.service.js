@@ -9,6 +9,10 @@ class EventService {
     create(eventForm) {
         return this.api.post('/create', eventForm)
     }
+
+    getEvents = () => {
+        return this.api.get('/')
+    }
 }
 
 const eventService = new EventService()
