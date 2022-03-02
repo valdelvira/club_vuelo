@@ -1,5 +1,7 @@
 const router = require("express").Router()
 const User = require('./../models/User.model')
+const { isAuthenticated } = require('./../middlewares/jwt.middleware')
+
 
 router.get("/profile", (req, res) => {
 
@@ -10,24 +12,26 @@ router.get("/profile", (req, res) => {
 })
 
 router.get("/profile/:user_id", (req, res) => {
-    const { user_id } = req.params
+    const { user_id } = req.params    // isAuthenticated
+
     User
         .findById(user_id)
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
 
-router.get("/profile/:user_id/edit", (req, res) => {
-    const { user_id } = req.params
+router.get("/profile/:user_id/edit", isAuthenticated, (req, res) => {
+    const { user_id } = req.params    // isAuthenticated
+    console.log(isAuthenticated)
     User
         .findById(user_id)
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/profile/:user_id/edit", (req, res) => {
+router.put("/profile/:user_id/edit", (req, res) => {
 
-    const { user_id } = req.params
+    const { user_id } = req.params    // isAuthenticated
     const { name, surname, flightHours, aboutMe, email, imageUrl, password } = req.body
 
     User
@@ -36,7 +40,7 @@ router.post("/profile/:user_id/edit", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/profile/:_id/delete", (req, res) => {
+router.delete("/profile/:_id/delete", (req, res) => {
 
     const { _id } = req.params
 
@@ -55,8 +59,6 @@ router.post("/profile", (req, res) => {
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
-
-
 
 
 module.exports = router

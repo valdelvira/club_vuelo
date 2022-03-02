@@ -1,6 +1,5 @@
 const router = require("express").Router()
 const Event = require('../models/Event.model')
-const Comment = require('../models/Comment.model')
 
 router.get("/", (req, res) => {
 
@@ -12,6 +11,7 @@ router.get("/", (req, res) => {
 
 router.get("/:event_id", (req, res) => {
     const { event_id } = req.params
+
     Event
         .findById(event_id)
         .then(response => res.json(response))
@@ -27,7 +27,7 @@ router.get("/:event_id/edit", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/:event_id/edit", (req, res) => {
+router.put("/:event_id/edit", (req, res) => {
 
     const { event_id } = req.params
     const { title, text, imgURL, location } = req.body
@@ -48,7 +48,7 @@ router.post("/create", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/:event_id/delete", (req, res) => {
+router.delete("/:event_id/delete", (req, res) => {
 
     const { event_id } = req.params
 
@@ -58,10 +58,10 @@ router.post("/:event_id/delete", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/:event_id/join", (req, res) => {
+router.put("/:event_id/join", (req, res) => {
 
     const { event_id } = req.params
-    const { user_id } = req.body
+    const { user_id } = req.body        // isAuthenticated
 
     Event
         .findByIdAndUpdate(event_id, { $push: { participants: user_id } })

@@ -20,6 +20,8 @@ const Navigation = () => {
                         <NavDropdown title="Akaflieg Madrid" id="navbarScrollingDropdown">
                             <NavLink to="/about-us">
                                 <NavDropdown.Item as="span">Quiénes somos</NavDropdown.Item>
+<<<<<<< HEAD:client/src/components/Navigator/Navigator.jsx
+=======
                             </NavLink>
 
                             <NavLink to="/projects">
@@ -36,6 +38,7 @@ const Navigation = () => {
 
                             <NavLink to="/contact">
                                 <NavDropdown.Item as="span">Contacto</NavDropdown.Item>
+>>>>>>> b95a468b868f51a19bfbbde8e296af107075f3db:client/src/components/Navigation/Navigation.jsx
                             </NavLink>
                         </NavDropdown>
 

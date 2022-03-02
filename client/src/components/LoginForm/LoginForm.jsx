@@ -3,7 +3,7 @@ import { Form, Button, Modal } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import authService from "../../services/auth.service"
 import { MessageContext } from "../../context/userMessage.context"
-
+import { AuthContext } from './../../context/auth.context'
 
 const LoginForm = ({ closeModal }) => {
 
@@ -13,6 +13,7 @@ const LoginForm = ({ closeModal }) => {
     })
 
     const { setMessageInfo, setShowMessage } = useContext(MessageContext)
+    const { storeToken, authenticateUser } = useContext(AuthContext)
 
     const navigate = useNavigate()
 
@@ -30,7 +31,9 @@ const LoginForm = ({ closeModal }) => {
 
         authService
             .login(LoginForm)
-            .then(() => {
+            .then(({ data }) => {
+                storeToken(data.authToken)
+                authenticateUser()
                 navigate('/')
                 closeModal()
                 setShowMessage(true)
