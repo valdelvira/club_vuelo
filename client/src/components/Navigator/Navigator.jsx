@@ -32,7 +32,7 @@ const Navigator = () => {
                         <NavLink to="/signup">
                             <Nav.Link as="span" >Registrarse</Nav.Link>
                         </NavLink>
-                        <Nav.Link href="#pricing" onClick={handleModalOpen} > Iniciar sesión</Nav.Link>
+                        <Nav.Link onClick={handleModalOpen}> Iniciar sesión</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar >
