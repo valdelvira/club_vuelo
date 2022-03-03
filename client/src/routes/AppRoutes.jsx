@@ -6,6 +6,7 @@ import ProfilePage from "../pages/ProfilePage/ProfilePage"
 import SignUpPage from "../pages/SignUpPage/SignUpPage"
 import NewsPage from "../pages/NewsPage/NewsPage"
 import EventsPage from "../pages/EventsPage/EventsPage"
+import EditProfile from "../components/Profile/EditProfile"
 
 const AppRoutes = () => {
     return (
@@ -18,6 +19,8 @@ const AppRoutes = () => {
             <Route path="/news" element={<NewsPage />} />
             <Route path="/events" element={<EventsPage />} />
             <Route path="/profile/:user_id" element={<ProfilePage />} />
+            <Route path="/profile/:user_id/edit" element={<EditProfile />} />
+
             <Route path="*" element={<h1>404</h1>} />
 
         </Routes>

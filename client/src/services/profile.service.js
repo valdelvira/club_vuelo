@@ -9,6 +9,7 @@ class ProfileService {
     getProfile = id => {
         return this.api.get(`/profile/${id}`)
     }
+
 }
 
 const profileService = new ProfileService()

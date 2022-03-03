@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import { Card, Container, Button, Row, Col, Image } from 'react-bootstrap'
 import './Profile.css'
 import { AuthContext } from '../../context/auth.context'
+import EditProfile from './EditProfile'
 
 
 
@@ -33,7 +34,9 @@ const Profile = ({ username, imageURL, aboutMe, flightHours, email }) => {
                     <Image className='photoProfile' src={imageURL} />
                 </Col>
             </Row>
+            <EditProfile />
         </Container>
+
     )
 }
 
