@@ -1,9 +1,10 @@
 import './Navigation.css'
 import { Navbar, Container, Nav, Image, NavDropdown, Modal } from 'react-bootstrap'
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { NavLink } from 'react-router-dom'
 import LoginForm from '../LoginForm/LoginForm'
 import { AuthContext } from './../../context/auth.context'
+import logo from './images/logo.png'
 
 
 const Navigation = () => {
@@ -18,7 +19,7 @@ const Navigation = () => {
             <Navbar bg="light" variant="light" className='navigator' sticky='top'>
                 <Container>
                     <NavLink to="/">
-                        <Image src='../../../logo.png' />
+                        <Image src={logo} />
                     </NavLink>
                     <Nav>
                         <NavDropdown title="Akaflieg Madrid" id="navbarScrollingDropdown">
@@ -51,7 +52,9 @@ const Navigation = () => {
                                 </>
                                 :
                                 <>
-                                    <Nav.Link as="span">¡Hola, {user?.username}!</Nav.Link>
+                                    <NavLink to={`/profile/${user?._id}`}>
+                                        <Nav.Link as="span">¡Hola, {user?.username}!</Nav.Link>
+                                    </NavLink>
                                     <Nav.Link as="span" onClick={logOutUser}>Cerrar sesión</Nav.Link>
                                 </>
                         }

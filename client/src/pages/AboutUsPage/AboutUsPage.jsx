@@ -1,5 +1,7 @@
 import { Container, Col, Row, Image } from "react-bootstrap"
 import './AboutUsPage.css'
+import photo1 from './images/Flugzeuge-7-1-1.jpeg'
+
 
 const AboutUsPage = () => {
     return (
@@ -18,7 +20,7 @@ const AboutUsPage = () => {
                             los aviones del club únicamente abonando el importe del remolque. </p>
                     </Col>
                     <Col>
-                        <Image src='./../../../img/Flugzeuge-7-1-1.jpeg' className='imagesAbout' />
+                        <Image src={photo1} className='imagesAbout' />
                     </Col>
                 </Row>
             </Container>
