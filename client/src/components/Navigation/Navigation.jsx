@@ -1,9 +1,11 @@
 import './Navigation.css'
 import { Navbar, Container, Nav, Image, NavDropdown, Modal } from 'react-bootstrap'
+import { useState, useContext } from "react"
 import { NavLink } from 'react-router-dom'
 import LoginForm from '../LoginForm/LoginForm'
 import { AuthContext } from './../../context/auth.context'
-import { useState, useContext } from 'react'
+import logo from './images/logo.png'
+
 
 
 const Navigation = () => {
@@ -13,33 +15,18 @@ const Navigation = () => {
 
     const handleModalClose = () => setShowModal(false)
     const handleModalOpen = () => setShowModal(true)
+
     return (
         <>
             <Navbar bg="light" variant="light" className='navigator' sticky='top'>
                 <Container>
                     <NavLink to="/">
-                        <Image src='../../../logo.png' />
+                        <Image src={logo} />
                     </NavLink>
                     <Nav>
                         <NavDropdown title="Akaflieg Madrid" id="navbarScrollingDropdown">
                             <NavLink to="/about-us">
                                 <NavDropdown.Item as="span">Quiénes somos</NavDropdown.Item>
-                            </NavLink>
-
-                            <NavLink to="/projects">
-                                <NavDropdown.Item as="span">Proyectos</NavDropdown.Item>
-                            </NavLink>
-
-                            <NavLink to="/sponsors">
-                                <NavDropdown.Item as="span">Patrocinadores</NavDropdown.Item>
-                            </NavLink>
-
-                            <NavLink to="/prices">
-                                <NavDropdown.Item as="span">Precios</NavDropdown.Item>
-                            </NavLink>
-
-                            <NavLink to="/contact">
-                                <NavDropdown.Item as="span">Contacto</NavDropdown.Item>
                             </NavLink>
                         </NavDropdown>
 
@@ -55,7 +42,7 @@ const Navigation = () => {
                             <Nav.Link as="span" >Eventos</Nav.Link>
                         </NavLink>
 
-                        
+
                         {
                             !isLoggedIn ?
                                 <>
@@ -65,9 +52,11 @@ const Navigation = () => {
                                     <Nav.Link onClick={handleModalOpen} > Iniciar sesión</Nav.Link>
 
                                 </>
-                            :
+                                :
                                 <>
-                                    <Nav.Link as="span">¡Hola, {user?.username}!</Nav.Link>
+                                    <NavLink to={`/profile/${user?._id}`}>
+                                        <Nav.Link as="span">¡Hola, {user?.username}!</Nav.Link>
+                                    </NavLink>
                                     <Nav.Link as="span" onClick={logOutUser}>Cerrar sesión</Nav.Link>
                                 </>
                         }

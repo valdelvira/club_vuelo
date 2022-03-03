@@ -13,6 +13,10 @@ class EventService {
     getEvents = () => {
         return this.api.get('/')
     }
+
+    editEvent = () => {
+        return this.api.put('/:event_id/edit')
+    }
 }
 
 const eventService = new EventService()
