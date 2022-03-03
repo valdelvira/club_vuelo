@@ -4,6 +4,7 @@ import { useState } from "react"
 import { NavLink } from 'react-router-dom'
 import LoginForm from '../LoginForm/LoginForm'
 import { AuthContext } from './../../context/auth.context'
+import { useContext } from 'react'
 
 
 const Navigation = () => {
@@ -13,6 +14,7 @@ const Navigation = () => {
 
     const handleModalClose = () => setShowModal(false)
     const handleModalOpen = () => setShowModal(true)
+
     return (
         <>
             <Navbar bg="light" variant="light" className='navigator' sticky='top'>

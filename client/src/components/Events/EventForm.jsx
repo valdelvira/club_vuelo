@@ -1,11 +1,11 @@
 import { useState, useContext } from "react"
-import { Form, Button, Modal } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import eventService from "../../services/event.service"
 import { MessageContext } from "../../context/userMessage.context"
 import uploadService from "../../services/upload.service"
 
-const EventForm = () => {
+const EventForm = ({ closeModal }) => {
 
     const [EventForm, SetEventForm] = useState({
         title: "",
@@ -34,6 +34,7 @@ const EventForm = () => {
             .uploadImage(uploadData)
             .then(({ data }) => {
                 SetEventForm({ ...EventForm, imgURL: data.cloudinary_url })
+
             })
             .catch(err => console.log(err))
     }
@@ -46,7 +47,7 @@ const EventForm = () => {
             .create(EventForm)
             .then(() => {
                 navigate('/')
-                // closeModal()
+                closeModal()
                 setShowMessage(true)
                 setMessageInfo({ title: 'Exito', desc: 'Evento creado correctamente' })
 
@@ -68,7 +69,7 @@ const EventForm = () => {
 
             <Form.Group controlId="formFile" className="mb-4">
                 <Form.Label>Foto de evento</Form.Label>
-                <Form.Control type="file" name='imgUrl' onChange={uploadEventImage} />
+                <Form.Control type="file" name='imgURL' onChange={uploadEventImage} />
             </Form.Group>
 
             <Button variant="dark" type="submit" style={{ width: '100%' }}>Publicar</Button>
