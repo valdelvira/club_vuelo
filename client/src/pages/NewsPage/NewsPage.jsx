@@ -1,19 +1,51 @@
-import { Container } from 'react-bootstrap'
+import { Container, Modal, Row } from 'react-bootstrap'
 import CreateNew from '../../components/News/CreateNew/CreateNew'
+import newsServices from '../../services/news.service'
 import { useContext } from 'react'
-import { AuthContext } from './../../context/auth.context'
+import { AuthContext } from '../../context/auth.context'
+import { useState, useEffect } from 'react'
+import NewsList from '../../components/News/NewsList/NewsList'
 
-const NewsPage = () => {
+function ListNews() {
+    const  [ news, setNews ] = useState([])
+    const [showModal, setShowModal] = useState(false)
+
+    useEffect(() => { loadNews() }, [])
 
     const { isLoggedIn, user, logOutUser } = useContext(AuthContext)
+    const handleModalClose = () => setShowModal(false)
+    const handleModalOpen = () => setShowModal(true)
 
+    const loadNews = () => {
+      
+        newsServices
+            .getAllNews()
+            .then(({data}) => {
+                console.log(data)
+                setNews(data)})
+            .catch(err => console.log(err))
+    }
+    return ( 
+        <>
+        <Container>
+                <h1>Noticias {
+                    isLoggedIn && <span onClick={handleModalOpen}>+Crear</span>
+                }</h1>
+                <Row>
+                    <NewsList news = { news }/>
+                </Row>
 
- return (
-     <Container>
-        <h1>¡¡¡Noticias!!!</h1>
-        <CreateNew/>
-     </Container>
- )
+        </Container>
+        <Modal show={showModal} onHide={handleModalClose} size="lg">
+            <Modal.Header closeButton>
+                <Modal.Title>Crear noticia</Modal.Title>
+            </Modal.Header >
+            <Modal.Body>
+                <CreateNew/>
+            </Modal.Body>
+        </Modal>
+        </>
+     )
 }
 
-export default NewsPage
+export default ListNews

@@ -1,9 +1,9 @@
 import './Navigation.css'
 import { Navbar, Container, Nav, Image, NavDropdown, Modal } from 'react-bootstrap'
-import { useState } from "react"
 import { NavLink } from 'react-router-dom'
 import LoginForm from '../LoginForm/LoginForm'
 import { AuthContext } from './../../context/auth.context'
+import { useState, useContext } from 'react'
 
 
 const Navigation = () => {

@@ -1,6 +1,7 @@
 const router = require("express").Router()
 const New = require('../models/New.model')
 const Comment = require('../models/Comment.model')
+const { isAuthenticated } = require('./../middlewares/jwt.middleware')
 
 router.get("/", (req, res) => {
 
@@ -11,7 +12,7 @@ router.get("/", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.get("/:new_id", (req, res) => {
+router.get("/:new_id", isAuthenticated, (req, res) => {
     const { new_id } = req.params
 
     New
@@ -20,7 +21,7 @@ router.get("/:new_id", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.get("/:new_id/edit", (req, res) => {
+router.get("/:new_id/edit", isAuthenticated, (req, res) => {
     const { new_id } = req.params
 
     New
@@ -39,7 +40,7 @@ router.post("/create", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.put("/:new_id/edit", (req, res) => {
+router.put("/:new_id/edit", isAuthenticated, (req, res) => {
 
     const { new_id } = req.params
     const { title, description, imgURL, comment } = req.body
@@ -50,7 +51,7 @@ router.put("/:new_id/edit", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.delete("/:new_id/delete", (req, res) => {
+router.delete("/:new_id/delete", isAuthenticated, isAuthenticated, (req, res) => {
 
     const { new_id } = req.params
 
@@ -74,7 +75,7 @@ router.post("/comment/:new_id", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.delete("/:comment_id/comment/delete", (req, res) => {
+router.delete("/:comment_id/comment/delete", isAuthenticated, (req, res) => {
 
     const { comment_id } = req.params
 

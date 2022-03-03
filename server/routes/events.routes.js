@@ -1,5 +1,6 @@
 const router = require("express").Router()
 const Event = require('../models/Event.model')
+const { isAuthenticated } = require('./../middlewares/jwt.middleware')
 
 router.get("/", (req, res) => {
 
@@ -9,7 +10,7 @@ router.get("/", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.get("/:event_id", (req, res) => {
+router.get("/:event_id", isAuthenticated, (req, res) => {
     const { event_id } = req.params
 
     Event
@@ -18,7 +19,7 @@ router.get("/:event_id", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.get("/:event_id/edit", (req, res) => {
+router.get("/:event_id/edit", isAuthenticated, (req, res) => {
     const { event_id } = req.params
 
     Event
@@ -27,7 +28,7 @@ router.get("/:event_id/edit", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.put("/:event_id/edit", (req, res) => {
+router.put("/:event_id/edit", isAuthenticated, (req, res) => {
 
     const { event_id } = req.params
     const { title, text, imgURL, location } = req.body
@@ -38,7 +39,7 @@ router.put("/:event_id/edit", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/create", (req, res) => {
+router.post("/create", isAuthenticated, (req, res) => {
 
     const { title, description, imgURL, location } = req.body
 
@@ -48,7 +49,7 @@ router.post("/create", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.delete("/:event_id/delete", (req, res) => {
+router.delete("/:event_id/delete", isAuthenticated, (req, res) => {
 
     const { event_id } = req.params
 

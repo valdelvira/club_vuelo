@@ -9,6 +9,10 @@ class NewsService {
     contact(createNewForm) {
         return this.api.post('/create', createNewForm)
     }
+
+    getAllNews() {
+        return this.api.get('/')
+    }
 }
 
 const newsService = new NewsService()
