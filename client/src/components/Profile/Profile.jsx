@@ -17,7 +17,7 @@ const Profile = ({ username, imageURL, aboutMe, flightHours, email }) => {
                         <Card.Body>
                             <Card.Title>{user?.username}</Card.Title>
                             <Card.Text>
-                                <p>{user?.email}</p>
+                                <p>{email}</p>
                                 <h5>Sobre mí</h5>
                                 <p>{aboutMe}</p>
                                 <h5>Horas de vuelo</h5>
