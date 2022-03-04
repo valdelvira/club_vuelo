@@ -8,6 +8,7 @@ import NewsPage from "../pages/NewsPage/NewsPage"
 import EventsPage from "../pages/EventsPage/EventsPage"
 import EditProfileForm from "../components/Profile/EditProfileForm"
 import PrivateRoute from './PrivateRoutes'
+import MeteoPage from "../pages/MeteoPage/MeteoPage"
 
 const AppRoutes = () => {
     return (
@@ -25,6 +26,7 @@ const AppRoutes = () => {
             <Route path="/profile/:user_id/edit" element={<EditProfileForm />} />
 
             <Route path="*" element={<h1>404</h1>} />
+            <Route path="/meteo" element={<MeteoPage />} />
 
         </Routes>
     )

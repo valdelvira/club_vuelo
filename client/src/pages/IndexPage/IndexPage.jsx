@@ -11,7 +11,9 @@ const IndexPage = () => {
 
     return (
 
+
         <Container>
+
             <UserMessage />
 
             <section className="hero">
@@ -23,15 +25,12 @@ const IndexPage = () => {
                 </Button>
 
             </section>
-
             {/* 3 noticias */}
             <Row>
                 <Col md={4}><NewsCard></NewsCard></Col>
                 <Col md={4}><NewsCard></NewsCard></Col>
                 <Col md={4}><NewsCard></NewsCard></Col>
             </Row>
-
-
             <section>
                 <Row>
 
@@ -56,6 +55,7 @@ const IndexPage = () => {
                     </Col>
                 </Row>
             </section>
+
         </Container>
     )
 }
