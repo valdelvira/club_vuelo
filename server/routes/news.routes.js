@@ -17,7 +17,11 @@ router.get("/:new_id", isAuthenticated, (req, res) => {
 
     New
         .findById(new_id)
-        .then(response => res.json(response))
+        .populate('comments')
+        .then(response => {
+            console.log(response)
+            res.json(response)
+        })
         .catch(err => res.status(500).json(err))
 })
 
@@ -30,7 +34,7 @@ router.get("/:new_id/edit", isAuthenticated, (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/create", (req, res) => {
+router.post("/create", isAuthenticated, (req, res) => {
 
     const { title, description, imgURL } = req.body
 
@@ -51,7 +55,7 @@ router.put("/:new_id/edit", isAuthenticated, (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.delete("/:new_id/delete", isAuthenticated, isAuthenticated, (req, res) => {
+router.delete("/:new_id/delete", isAuthenticated, (req, res) => {
 
     const { new_id } = req.params
 

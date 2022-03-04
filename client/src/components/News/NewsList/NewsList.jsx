@@ -5,7 +5,7 @@ const NewsList = ({ news }) => {
     return (
         <>{
             news.map(theNew => {
-                return <Col md={4} key={theNew.title}> <NewsCard {...theNew} /> </Col>
+                return <Col md={4} key={theNew._id}> <NewsCard {...theNew} /> </Col>
             })
         }
         </>

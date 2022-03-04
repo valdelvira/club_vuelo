@@ -1,6 +1,7 @@
 import { Card, Button, Col } from "react-bootstrap"
+import { Link } from "react-router-dom"
 
-const NewsCard = ({ title, description, imgURL }) => {
+const NewsCard = ({ _id, title, description, imgURL }) => {
     return (
        <Col>
             <Card style={{ width: '18rem' }}>
@@ -10,7 +11,9 @@ const NewsCard = ({ title, description, imgURL }) => {
                     <Card.Text>
                         {description}
                     </Card.Text>
-                    <Button variant="primary">Ver</Button>
+                       <Link to={`/details/${_id}`}>
+                            <Button variant="primary">Ver</Button>
+                       </Link>
                 </Card.Body>
             </Card>
         </Col>

@@ -20,9 +20,7 @@ function ListNews() {
       
         newsServices
             .getAllNews()
-            .then(({data}) => {
-                console.log(data)
-                setNews(data)})
+            .then(({data}) => setNews(data))
             .catch(err => console.log(err))
     }
     return ( 
