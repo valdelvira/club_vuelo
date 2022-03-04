@@ -16,9 +16,16 @@ class ProfileService {
         })
     }
 
+
+
     getProfile = id => {
         return this.api.get(`/profile/${id}`)
     }
+
+    editProfile = (id, profileForm) => {
+        return this.api.put(`/profile/${id}/edit`, profileForm)
+    }
+
 }
 
 const profileService = new ProfileService()

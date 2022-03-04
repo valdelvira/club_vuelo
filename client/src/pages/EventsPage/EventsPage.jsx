@@ -14,9 +14,6 @@ const EventsPage = () => {
     const handleModalFormOpen = () => setShowModal(true)
 
 
-    // const handleModalClose = () => setShowModal(false)
-    // const handleModalOpen = () => setShowModal(true)
-
     useEffect(() => {
         loadEvents()
     }, [])

@@ -20,9 +20,8 @@ router.get("/profile/:user_id", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.get("/profile/:user_id/edit", isAuthenticated, (req, res) => {
+router.get("/profile/:user_id/edit", (req, res) => {
     const { user_id } = req.params    // isAuthenticated
-    console.log(isAuthenticated)
     User
         .findById(user_id)
         .then(response => res.json(response))
