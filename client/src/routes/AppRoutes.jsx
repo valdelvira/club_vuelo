@@ -7,6 +7,7 @@ import SignUpPage from "../pages/SignUpPage/SignUpPage"
 import NewsPage from "../pages/NewsPage/NewsPage"
 import EventsPage from "../pages/EventsPage/EventsPage"
 import PrivateRoute from './PrivateRoutes'
+import MeteoPage from "../pages/MeteoPage/MeteoPage"
 
 const AppRoutes = () => {
     return (
@@ -22,6 +23,7 @@ const AppRoutes = () => {
             <Route path="/events" element={<EventsPage />} />
             <Route path="/profile/:user_id" element={<ProfilePage />} />
             <Route path="*" element={<h1>404</h1>} />
+            <Route path="/meteo" element={<MeteoPage />} />
 
         </Routes>
     )
