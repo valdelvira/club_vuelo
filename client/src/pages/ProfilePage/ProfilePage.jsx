@@ -4,23 +4,25 @@ import Profile from "../../components/Profile/Profile"
 import { AuthContext } from "../../context/auth.context"
 import profileService from '../../services/profile.service'
 
+
 const ProfilePage = () => {
 
     const [profile, setProfile] = useState([])
+    const { user, isLoading } = useContext(AuthContext)
+
 
 
     useEffect(() => {
-        loadProfile()
-    }, [])
+        user && loadProfile()
+    }, [user])
 
     const loadProfile = () => {
         profileService
-            .getProfile(user._id)
+            .getProfile(user?._id)
             .then(({ data }) => setProfile(data))
             .catch(err => console.log(err))
     }
 
-    const { user } = useContext(AuthContext)
 
     return (
         <Container>

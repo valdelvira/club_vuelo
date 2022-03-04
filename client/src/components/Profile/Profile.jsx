@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { Card, Container, Button, Row, Col, Image } from 'react-bootstrap'
 import './Profile.css'
 import { AuthContext } from '../../context/auth.context'
-import EditProfile from './EditProfile'
+import EditProfileForm from './EditProfileForm'
 
 
 
@@ -18,11 +18,13 @@ const Profile = ({ username, imageURL, aboutMe, flightHours, email }) => {
                         <Card.Body>
                             <Card.Title>{user?.username}</Card.Title>
                             <Card.Text>
-                                <p>{email}</p>
-                                <h5>Sobre mí</h5>
-                                <p>{aboutMe}</p>
-                                <h5>Horas de vuelo</h5>
-                                <p>{flightHours}</p>
+                                {email}
+                                <br></br>
+                                Sobre mí
+                                {aboutMe}
+                                <br></br>
+                                Horas de vuelo
+                                {flightHours}
                             </Card.Text>
                             <Button variant="warning">Editar</Button>
                             <Button variant="danger">Borrar</Button>
@@ -34,7 +36,8 @@ const Profile = ({ username, imageURL, aboutMe, flightHours, email }) => {
                     <Image className='photoProfile' src={imageURL} />
                 </Col>
             </Row>
-            <EditProfile />
+            <Button>Editar Perfil</Button>
+            <EditProfileForm />
         </Container>
 
     )
