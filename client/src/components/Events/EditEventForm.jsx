@@ -60,7 +60,6 @@ const EditEventForm = () => {
             </Form.Group>
 
             <Button variant="dark" type="submit" style={{ width: '100%' }}>Actualizar evento</Button>
-
         </Form >
 
     )

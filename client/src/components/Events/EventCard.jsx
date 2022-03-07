@@ -15,12 +15,12 @@ const EventCard = ({ title, description, imgURL, _id }) => {
     const handleModalClose = () => setShowModal(false)
     const handleModalOpen = () => setShowModal(true)
 
-    const deleteEvent = () => {
-        eventService
-            .deleteEvent(_id)
-            .then(() => Navigate('/events'))
-            .catch(err => console.log(err))
-    }
+    // const deleteEvent = () => {
+    //     eventService
+    //         .deleteEvent(_id)
+    //         .then(() => Navigate('/events'))
+    //         .catch(err => console.log(err))
+    // }
 
 
     return (
@@ -50,7 +50,7 @@ const EventCard = ({ title, description, imgURL, _id }) => {
                                 {description}
                                 <p>Listado de participantes</p>
                             </Card.Text>
-                            {user?.role === 'ADMIN' && <Button variant="warning" onClick={deleteEvent(_id)}>Borrar</Button>}
+                            {/* {user?.role === 'ADMIN' && <Button variant="warning" onClick={deleteEvent(_id)}>Borrar</Button>} */}
                             <Button variant="primary">Unirse </Button>
                             <Button variant="warning">Editar </Button>
 

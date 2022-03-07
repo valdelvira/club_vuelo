@@ -68,7 +68,7 @@ router.delete("/:new_id/delete", isAuthenticated, (req, res) => {
 router.post("/comment/:new_id", isAuthenticated, (req, res) => {
 
     const { new_id } = req.params
-    const { comment, owner } = req.body  // isAuthenticated
+    const { comment, owner } = req.body
 
     Comment
         .create({ comment, owner, new_id })

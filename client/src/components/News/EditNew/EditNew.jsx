@@ -1,7 +1,6 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import uploadService from '../../../services/upload.service'
-import { AuthContext } from '../../../context/auth.context'
 import { useNavigate, useParams } from 'react-router-dom'
 import newsService from '../../../services/news.service'
 
@@ -22,14 +21,13 @@ const EditNew = () => {
 
 
     useEffect(() => {
-        loadProfile()
+        loadNews()
     }, [])
 
-    const loadProfile = () => {
+    const loadNews = () => {
         newsService
             .getEditNew(id)
             .then(({ data }) => {
-                console.log(data)
                 setNewForm(data)
             })
             .catch(err => console.log(err))
@@ -69,7 +67,6 @@ const EditNew = () => {
             })
             .catch(err => console.log('Error en actualización de la noticia', err))
     }
-
 
 
     return (

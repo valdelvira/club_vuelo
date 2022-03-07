@@ -45,7 +45,6 @@ const EventsPage = () => {
                 </Modal.Body>
 
             </Modal>
-            <EditEventForm></EditEventForm>
         </Container>
     )
 }
