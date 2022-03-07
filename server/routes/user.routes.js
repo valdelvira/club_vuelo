@@ -11,7 +11,7 @@ router.get("/profile", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.get("/profile/:user_id", (req, res) => {
+router.get("/profile/:user_id", isAuthenticated, (req, res) => {
     const { user_id } = req.params    // isAuthenticated
 
     User
@@ -20,7 +20,7 @@ router.get("/profile/:user_id", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.get("/profile/:user_id/edit", (req, res) => {
+router.get("/profile/:user_id/edit", isAuthenticated, (req, res) => {
     const { user_id } = req.params    // isAuthenticated
     User
         .findById(user_id)
@@ -28,7 +28,7 @@ router.get("/profile/:user_id/edit", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.put("/profile/:user_id/edit", (req, res) => {
+router.put("/profile/:user_id/edit", isAuthenticated, (req, res) => {
 
     const { user_id } = req.params    // isAuthenticated
     const { name, surname, flightHours, aboutMe, email, imageUrl, password } = req.body

@@ -65,7 +65,7 @@ router.delete("/:new_id/delete", isAuthenticated, (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/comment/:new_id", (req, res) => {
+router.post("/comment/:new_id", isAuthenticated, (req, res) => {
 
     const { new_id } = req.params
     const { comment, owner } = req.body  // isAuthenticated
@@ -73,7 +73,7 @@ router.post("/comment/:new_id", (req, res) => {
     Comment
         .create({ comment, owner, new_id })
         .then(response => {
-            New.findByIdAndUpdate(new_id, { $push: { comments: response._id } })
+            return New.findByIdAndUpdate(new_id, { $push: { comments: response._id } })
         })
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
@@ -82,6 +82,8 @@ router.post("/comment/:new_id", (req, res) => {
 router.delete("/:comment_id/comment/delete", isAuthenticated, (req, res) => {
 
     const { comment_id } = req.params
+
+    New.findByIdAndUpdate(comment_id, { $pop: { comment } })
 
     Comment
         .findByIdAndDelete(comment_id)

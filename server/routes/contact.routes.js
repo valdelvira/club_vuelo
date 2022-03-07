@@ -5,7 +5,7 @@ const { isAuthenticated } = require('./../middlewares/jwt.middleware')
 
 router.post('/contact', isAuthenticated, (req, res) => {
     const { email, message } = req.body
-    console.log(isAuthenticated)
+
     transporter
         .sendMail({
             from: '"Club de Vuelo UPM Akaflieg Madrid" <clubvuelo.aeroespacial@upm.es>',

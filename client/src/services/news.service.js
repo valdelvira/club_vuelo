@@ -32,6 +32,14 @@ class NewsService {
         return this.api.delete(`/${id}/delete`)
     }
 
+    deleteComment(id) {
+        return this.api.delete(`/${id}/comment/delete`)
+    }
+
+    postComment(id, formComment) {
+        return this.api.post(`/comment/${id}`, formComment)
+    }
+
 }
 
 const newsService = new NewsService()
