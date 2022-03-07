@@ -25,7 +25,11 @@ const EventForm = ({ closeModal, refreshEvents }) => {
 
     const { setMessageInfo, setShowMessage } = useContext(MessageContext)
 
+    const [loadingImage, setLoadingImage] = useState(false)
+
     const uploadEventImage = e => {
+
+        setLoadingImage(true)
 
         const uploadData = new FormData()
         uploadData.append('imageData', e.target.files[0])
@@ -33,6 +37,7 @@ const EventForm = ({ closeModal, refreshEvents }) => {
         uploadService
             .uploadImage(uploadData)
             .then(({ data }) => {
+                setLoadingImage(false)
                 SetEventForm({ ...EventForm, imgURL: data.cloudinary_url })
 
             })
@@ -73,7 +78,9 @@ const EventForm = ({ closeModal, refreshEvents }) => {
                 <Form.Control type="file" name='imgURL' onChange={uploadEventImage} />
             </Form.Group>
 
-            <Button variant="dark" type="submit" style={{ width: '100%' }}>Publicar</Button>
+            <Button variant="dark" type="submit" style={{ width: '100%' }} disabled={loadingImage}>
+                {loadingImage ? 'Espere...' : 'Crear evento'}
+            </Button>
 
         </Form>
     )
