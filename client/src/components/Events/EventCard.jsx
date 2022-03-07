@@ -68,7 +68,7 @@ const EventCard = ({ title, description, imgURL, participants, _id, refreshEvent
                                     participants.map(elem => {
                                         return (<>
                                             <p key={elem.username}>{elem.username}</p>
-                                            <Button variant="primary" onClick={joinEvent}>Borrar participante </Button>
+                                            <Button variant="primary" onClick={joinEvent} key={elem.username}>Borrar participante </Button>
                                         </>)
                                     })
                                 }

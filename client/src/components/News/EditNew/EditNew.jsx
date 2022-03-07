@@ -1,15 +1,7 @@
-<<<<<<< HEAD
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect } from 'react'
 import { Form, Button, Container } from 'react-bootstrap'
 import uploadService from '../../../services/upload.service'
-import { AuthContext } from '../../../context/auth.context'
-import { Link, useNavigate, useParams } from 'react-router-dom'
-=======
-import { useState, useEffect } from 'react'
-import { Form, Button } from 'react-bootstrap'
-import uploadService from '../../../services/upload.service'
-import { useNavigate, useParams } from 'react-router-dom'
->>>>>>> ce7d7c9ce2f11b50bc6ad7cb87efe801812ffe2e
+import { useNavigate, useParams, Link } from 'react-router-dom'
 import newsService from '../../../services/news.service'
 
 
@@ -25,7 +17,7 @@ const EditNew = () => {
 
     const navigate = useNavigate()
     const { id } = useParams()
-
+    const [loadingImage, setLoadingImage] = useState(false)
 
 
     useEffect(() => {
@@ -51,12 +43,15 @@ const EditNew = () => {
 
     const uploadNewImage = e => {
 
+        setLoadingImage(true)
+
         const uploadData = new FormData()
         uploadData.append('imageData', e.target.files[0])
 
         uploadService
             .uploadImage(uploadData)
             .then(({ data }) => {
+                setLoadingImage(false)
                 setNewForm({ ...newForm, imgURL: data.cloudinary_url })
             })
             .catch(err => console.log(err))
@@ -90,8 +85,13 @@ const EditNew = () => {
                     <Form.Control type="file" name='imgURL' onChange={uploadNewImage} />
                 </Form.Group>
 
-                <Button variant="dark" type="submit" style={{ width: '50%' }}>Actualizar datos</Button>
-                <Button variant="dark" style={{ width: '50%' }}><Link to='/news' >Volver al listado de noticias</Link></Button>
+                <Button variant="dark" type="submit" style={{ width: '50%' }} disabled={loadingImage}>
+                    {loadingImage ? 'Espere...' : 'Editar Noticia'}
+                </Button>
+
+                <Button variant="dark" style={{ width: '50%' }}>
+                    <Link to='/news' >Volver al listado de noticias</Link>
+                </Button>
 
             </Form>
         </Container>

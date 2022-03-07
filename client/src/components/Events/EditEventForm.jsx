@@ -15,6 +15,8 @@ const EditEventForm = () => {
 
     const { id } = useParams()
     const navigate = useNavigate()
+    const [loadingImage, setLoadingImage] = useState(false)
+
 
     useEffect(() => {
         loadEvent()
@@ -78,7 +80,7 @@ const EditEventForm = () => {
                 <Form.Control type="file" name='imgURL' onChange={uploadNewImage} />
             </Form.Group>
 
-            <Button variant="dark" type="submit" style={{ width: '100%' }}>Actualizar evento</Button>
+            <Button variant="dark" type="submit" style={{ width: '100%' }} disabled={loadingImage}>{loadingImage ? 'Espere...' : 'Editar evento'}</Button>
         </Form >
 
     )
