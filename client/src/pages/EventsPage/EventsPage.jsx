@@ -33,7 +33,7 @@ const EventsPage = () => {
             <h1>Eventos</h1>
             <Button onClick={handleModalFormOpen}> Crear evento</Button>
             <Row>
-                <EventList events={events} />
+                <EventList events={events} refreshEvents={loadEvents} />
             </Row>
 
             <Modal show={showModal} onHide={handleModalFormClose} size="lg">
@@ -41,7 +41,7 @@ const EventsPage = () => {
                 <Modal.Title>Crea un evento</Modal.Title>
 
                 <Modal.Body>
-                    <EventForm closeModal={handleModalFormClose} />
+                    <EventForm closeModal={handleModalFormClose} refreshEvents={loadEvents} />
                 </Modal.Body>
 
             </Modal>

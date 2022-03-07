@@ -11,6 +11,7 @@ import PrivateRoute from './PrivateRoutes'
 import NewsDetails from "../pages/NewsPage/NewsDetails"
 import MeteoPage from "../pages/MeteoPage/MeteoPage"
 import EditNew from "../components/News/EditNew/EditNew"
+import EventsEdit from "../pages/EventsPage/EventsEdit"
 
 const AppRoutes = () => {
     return (
@@ -30,6 +31,7 @@ const AppRoutes = () => {
                 <Route path="" element={<ProfilePage />} />
             </Route>
             <Route path="/events" element={<EventsPage />} />
+            <Route path="/events/:id/edit" element={<EventsEdit />} />
             <Route path="/profile/:user_id" element={<ProfilePage />} />
             <Route path="/profile/:user_id/edit" element={<EditProfileForm />} />
 

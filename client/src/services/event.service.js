@@ -24,8 +24,8 @@ class EventService {
         return this.api.get('/')
     }
 
-    getSingleEvent = id => {
-        return this.api.get(`/${id}`)
+    getEditEvent = (id) => {
+        return this.api.get(`/${id}/edit`)
     }
 
     editEvent = (id, eventForm) => {
@@ -34,6 +34,10 @@ class EventService {
 
     deleteEvent(id) {
         return this.api.delete(`/${id}/delete`)
+    }
+
+    joinEvent(id) {
+        return this.api.put(`/${id}/join`)
     }
 }
 
