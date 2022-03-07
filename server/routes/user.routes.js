@@ -12,8 +12,8 @@ router.get("/profile", (req, res) => {
 })
 
 router.get("/profile/:user_id", isAuthenticated, (req, res) => {
-    const { user_id } = req.params    // isAuthenticated
-
+    const user_id = req.payload._id
+    console.log(isAuthenticated)
     User
         .findById(user_id)
         .then(response => res.json(response))
@@ -21,7 +21,7 @@ router.get("/profile/:user_id", isAuthenticated, (req, res) => {
 })
 
 router.get("/profile/:user_id/edit", isAuthenticated, (req, res) => {
-    const { user_id } = req.params    // isAuthenticated
+    const { user_id } = req.payload._id
     User
         .findById(user_id)
         .then(response => res.json(response))
@@ -30,7 +30,7 @@ router.get("/profile/:user_id/edit", isAuthenticated, (req, res) => {
 
 router.put("/profile/:user_id/edit", isAuthenticated, (req, res) => {
 
-    const { user_id } = req.params    // isAuthenticated
+    const { user_id } = req.payload._id
     const { name, surname, flightHours, aboutMe, email, imageURL, password } = req.body
 
     User

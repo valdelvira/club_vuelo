@@ -85,11 +85,11 @@ const EventCard = ({ title, description, imgURL, participants, _id, refreshEvent
                             <Link to={`/events/${_id}/edit`}>
                                 <Button variant="warning">Editar </Button>
                             </Link>
-                        </Card.Body>
-                    </Card>
-                </Modal.Body>
+                        </Card.Body >
+                    </Card >
+                </Modal.Body >
 
-            </Modal>
+            </Modal >
         </>
     )
 }

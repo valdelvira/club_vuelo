@@ -10,7 +10,7 @@ router.post('/contact', isAuthenticated, (req, res) => {
         .sendMail({
             from: '"Club de Vuelo UPM Akaflieg Madrid" <clubvuelo.aeroespacial@upm.es>',
             to: 'egovaldel@gmail.com',
-            subject: 'Nuevo mensaje desde el formulario de contacto.',
+            subject: `Nuevo mensaje desde el formulario de contacto.`,
             text: message,
             html: `<h2>Nuevo mensaje de contacto</h2>
                     <p>Ha recibido un nuevo mensaje de: <b>${email}</b> </p>

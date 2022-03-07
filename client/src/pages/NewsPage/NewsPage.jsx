@@ -28,12 +28,11 @@ function ListNews() {
         <>
             <Container>
                 <h1>Noticias {
-                    isLoggedIn && <span onClick={handleModalOpen}>+Crear</span>
+                    isLoggedIn && <span onClick={handleModalOpen}>+ Crear noticia</span>
                 }</h1>
                 <Row>
                     <NewsList news={news} />
                 </Row>
-                <EditNew />
             </Container>
             <Modal show={showModal} onHide={handleModalClose} size="lg">
                 <Modal.Header closeButton>
