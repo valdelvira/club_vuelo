@@ -40,6 +40,13 @@ class NewsService {
         return this.api.post(`/comment/${id}`, formComment)
     }
 
+    getEditNew(id) {
+        return this.api.get(`/${id}/edit`)
+    }
+
+    putEditNews(id, newForm) {
+        return this.api.put(`/${id}/edit`, newForm)
+    }
 }
 
 const newsService = new NewsService()

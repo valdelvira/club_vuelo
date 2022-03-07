@@ -1,8 +1,8 @@
 import UserMessage from "../../components/UserMessage/UserMessage"
 import { Container, Button, Row, Col, Image } from 'react-bootstrap'
-import ContactPage from "../ContactPage/ContactPage"
 import './IndexPage.css'
 import NewsCard from "../../components/News/NewsCard/NewsCard"
+import NewsList from "../../components/News/NewsList/NewsList"
 
 
 
@@ -25,11 +25,11 @@ const IndexPage = () => {
                 </Button>
 
             </section>
-            {/* 3 noticias */}
+
             <Row>
-                <Col md={4}><NewsCard></NewsCard></Col>
-                <Col md={4}><NewsCard></NewsCard></Col>
-                <Col md={4}><NewsCard></NewsCard></Col>
+                <Col md={4}><NewsCard /></Col>
+                <Col md={4}><NewsCard /></Col>
+                <Col md={4}><NewsCard /></Col>
             </Row>
             <section>
                 <Row>

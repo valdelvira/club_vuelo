@@ -6,7 +6,7 @@ import EditProfileForm from './EditProfileForm'
 
 
 
-const Profile = ({ username, imageURL, aboutMe, flightHours, email }) => {
+const Profile = ({ imageURL, aboutMe, flightHours, email }) => {
 
     const { user } = useContext(AuthContext)
 
@@ -18,12 +18,11 @@ const Profile = ({ username, imageURL, aboutMe, flightHours, email }) => {
                         <Card.Body>
                             <Card.Title>{user?.username}</Card.Title>
                             <Card.Text>
-                                {email}
+                                Email : {email}
                                 <br></br>
-                                Sobre mí
-                                {aboutMe}
+                                Sobre mí : {aboutMe}
                                 <br></br>
-                                Horas de vuelo
+                                Horas de vuelo :
                                 {flightHours}
                             </Card.Text>
                             <Button variant="warning">Editar</Button>
