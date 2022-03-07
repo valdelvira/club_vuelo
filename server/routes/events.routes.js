@@ -1,11 +1,14 @@
 const router = require("express").Router()
+const { populate } = require("../models/Event.model")
 const Event = require('../models/Event.model')
+const New = require("../models/New.model")
 const { isAuthenticated } = require('./../middlewares/jwt.middleware')
 
 router.get("/", (req, res) => {
 
     Event
         .find()
+        .populate('participants')
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
@@ -59,13 +62,23 @@ router.delete("/:event_id/delete", isAuthenticated, (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.put("/:event_id/join", (req, res) => {
+router.put("/:event_id/join", isAuthenticated, (req, res) => {
 
     const { event_id } = req.params
-    const { user_id } = req.body        // isAuthenticated
 
     Event
-        .findByIdAndUpdate(event_id, { $push: { participants: user_id } })
+        .findByIdAndUpdate(event_id, { $push: { participants: req.payload._id } })
+        .then(response => res.json(response))
+        .catch(err => res.status(500).json(err))
+})
+
+router.delete('/:event_id/deleteParticipant', isAuthenticated, (req, res) => {
+    const { event_id } = req.params
+
+    New.findByIdAndUpdate(event_id, { $pop: { participant } })
+
+    Event
+        .findByIdAndDelete(req.payload._id)
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
