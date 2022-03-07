@@ -22,8 +22,9 @@ function NewsDetails() {
     }
  
     const deleteComment = (comment_id) => {
+        
         newsServices
-            .deleteComment(comment_id)
+            .deleteComment(comment_id, _id)
             .then(() => loadNews() )
             .catch(err => console.log(err))
     }

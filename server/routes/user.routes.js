@@ -39,7 +39,7 @@ router.put("/profile/:user_id/edit", isAuthenticated, (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.delete("/profile/:_id/delete", (req, res) => {
+router.delete("/profile/:_id/delete", isAuthenticated, (req, res) => {
 
     const { _id } = req.params
 
@@ -49,7 +49,7 @@ router.delete("/profile/:_id/delete", (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-router.post("/profile", (req, res) => {
+router.post("/profile", isAuthenticated, (req, res) => {
 
     const { username, name, lastname, nif, flightHours, aboutMe, password, imageURL, birth, email } = req.body
 

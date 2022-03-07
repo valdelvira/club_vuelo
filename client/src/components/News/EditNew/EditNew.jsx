@@ -1,15 +1,8 @@
-<<<<<<< HEAD
 import { useState, useEffect, useContext } from 'react'
 import { Form, Button, Container } from 'react-bootstrap'
 import uploadService from '../../../services/upload.service'
 import { AuthContext } from '../../../context/auth.context'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-=======
-import { useState, useEffect } from 'react'
-import { Form, Button } from 'react-bootstrap'
-import uploadService from '../../../services/upload.service'
-import { useNavigate, useParams } from 'react-router-dom'
->>>>>>> ce7d7c9ce2f11b50bc6ad7cb87efe801812ffe2e
 import newsService from '../../../services/news.service'
 
 
@@ -35,9 +28,7 @@ const EditNew = () => {
     const loadNews = () => {
         newsService
             .getEditNew(id)
-            .then(({ data }) => {
-                setNewForm(data)
-            })
+            .then(({ data }) => setNewForm(data))
             .catch(err => console.log(err))
     }
 

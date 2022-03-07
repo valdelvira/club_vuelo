@@ -9,7 +9,7 @@ router.post('/image', uploader.single('imageData'), (req, res) => {
         return
     }
 
-    res.json({ cloudinary_url: req.file.path })
+    res.status(200).json({ cloudinary_url: req.file.path })
 })
 
 

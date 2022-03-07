@@ -34,9 +34,9 @@ const AppRoutes = () => {
             <Route path="/events/:id/edit" element={<EventsEdit />} />
             <Route path="/profile/:user_id" element={<ProfilePage />} />
             <Route path="/profile/:user_id/edit" element={<EditProfileForm />} />
+            <Route path="/meteo" element={<MeteoPage />} />
 
             <Route path="*" element={<h1>404</h1>} />
-            <Route path="/meteo" element={<MeteoPage />} />
 
         </Routes>
     )

@@ -16,7 +16,7 @@ router.post('/contact', isAuthenticated, (req, res) => {
                     <p>Ha recibido un nuevo mensaje de: <b>${email}</b> </p>
                     <p>Mensaje: ${message}</p>`
         })
-        .then(info => res.send(info))
+        .then(info => res.status(200).send(info))
         .catch(error => console.log(error))
 })
 
