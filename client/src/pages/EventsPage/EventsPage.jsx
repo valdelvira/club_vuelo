@@ -1,8 +1,11 @@
-import EventForm from "../../components/Events/EventForm"
 import { Row, Container, Button, Modal } from "react-bootstrap"
-import EventList from '../../components/Events/EventList'
 import { useEffect, useState } from "react"
+
 import eventService from "../../services/event.service"
+
+import EventForm from "../../components/Events/EventForm"
+import EventList from '../../components/Events/EventList'
+import EditEventForm from "../../components/Events/EditEventForm"
 
 const EventsPage = () => {
 
@@ -42,6 +45,7 @@ const EventsPage = () => {
                 </Modal.Body>
 
             </Modal>
+            <EditEventForm></EditEventForm>
         </Container>
     )
 }

@@ -31,10 +31,10 @@ router.get("/profile/:user_id/edit", (req, res) => {
 router.put("/profile/:user_id/edit", (req, res) => {
 
     const { user_id } = req.params    // isAuthenticated
-    const { name, surname, flightHours, aboutMe, email, imageUrl, password } = req.body
+    const { name, surname, flightHours, aboutMe, email, imageURL, password } = req.body
 
     User
-        .findByIdAndUpdate(user_id, { name, surname, flightHours, aboutMe, email, imageUrl, password })
+        .findByIdAndUpdate(user_id, { name, surname, flightHours, aboutMe, email, imageURL, password })
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })

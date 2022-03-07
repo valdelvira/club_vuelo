@@ -13,7 +13,7 @@ const EditProfileForm = () => {
     const [profileForm, setProfileForm] = useState({
         email: "",
         flightHours: "",
-        aboutMe: ""
+        aboutMe: "",
     })
 
     const { user, isLoading } = useContext(AuthContext)
@@ -29,7 +29,6 @@ const EditProfileForm = () => {
         profileService
             .getProfile(user?._id)
             .then(({ data }) => {
-                console.log(data)
                 setProfileForm(data)
             })
             .catch(err => console.log(err))
@@ -43,27 +42,26 @@ const EditProfileForm = () => {
         })
     }
 
-    // const uploadProfileImage = e => {
+    const uploadProfileImage = e => {
 
-    //     const uploadData = new FormData()
-    //     uploadData.append('imageData', e.target.files[0])
+        const uploadData = new FormData()
+        uploadData.append('imageData', e.target.files[0])
 
-    //     uploadService
-    //         .uploadImage(uploadData)
-    //         .then(({ data }) => {
-    //             setProfileForm({ ...profileForm, imageURL: data.cloudinary_url })
-    //         })
-    //         .catch(err => console.log(err))
-    // }
+        uploadService
+            .uploadImage(uploadData)
+            .then(({ data }) => {
+                setProfileForm({ ...profileForm, imageURL: data.cloudinary_url })
+            })
+            .catch(err => console.log(err))
+    }
 
     function handleSubmit(e) {
 
         e.preventDefault()
 
         profileService
-            .editProfile(user._id, profileForm)
+            .editProfile(user?._id, profileForm)
             .then(() => {
-                console.log(profileForm)
                 navigate('/')
 
             })
@@ -90,10 +88,10 @@ const EditProfileForm = () => {
                 <Form.Control as="textarea" rows={4} type="text" name="aboutMe" value={profileForm.aboutMe} onChange={handleInputChange} />
             </Form.Group>
 
-            {/* <Form.Group controlId="formFile" className="mb-3">
+            <Form.Group controlId="formFile" className="mb-3">
                 <Form.Label>Foto de perfil</Form.Label>
-                <Form.Control type="file" name='imageUrl' value={profileForm.imageURL} onChange={uploadProfileImage} />
-            </Form.Group> */}
+                <Form.Control type="file" name='imageURL' onChange={uploadProfileImage} />
+            </Form.Group>
 
             <Button variant="dark" type="submit" style={{ width: '100%' }}>Actualizar datos</Button>
 
