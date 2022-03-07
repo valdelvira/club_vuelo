@@ -31,10 +31,10 @@ router.get("/:event_id/edit", isAuthenticated, (req, res) => {
 router.put("/:event_id/edit", isAuthenticated, (req, res) => {
 
     const { event_id } = req.params
-    const { title, text, imgURL, location } = req.body
+    const { title, description, imgURL, location } = req.body
 
     Event
-        .findByIdAndUpdate(event_id, { title, text, imgURL, location })
+        .findByIdAndUpdate(event_id, { title, description, imgURL, location })
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })

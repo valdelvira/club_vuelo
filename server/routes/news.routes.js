@@ -17,9 +17,14 @@ router.get("/:new_id", isAuthenticated, (req, res) => {
 
     New
         .findById(new_id)
-        .populate('comments')
+        .populate({
+            path: 'comments',
+            populate: {
+                path: 'owner'
+            }
+        })
+
         .then(response => {
-            console.log(response)
             res.json(response)
         })
         .catch(err => res.status(500).json(err))
@@ -68,7 +73,8 @@ router.delete("/:new_id/delete", isAuthenticated, (req, res) => {
 router.post("/comment/:new_id", isAuthenticated, (req, res) => {
 
     const { new_id } = req.params
-    const { comment, owner } = req.body  // isAuthenticated
+    const { comment } = req.body
+    const owner = req.payload._id
 
     Comment
         .create({ comment, owner, new_id })
@@ -83,8 +89,8 @@ router.delete("/:comment_id/comment/delete", isAuthenticated, (req, res) => {
 
     const { comment_id } = req.params
 
-    New.findByIdAndUpdate(comment_id, { $pop: { comment } })
-
+    New.findByIdAndUpdate(comment_id, { $pull: { comments: comment_id } })
+    console.log(comment_id)
     Comment
         .findByIdAndDelete(comment_id)
         .then(response => res.json(response))

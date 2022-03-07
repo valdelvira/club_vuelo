@@ -17,7 +17,10 @@ function CommentForm({newsId, loadNews}) {
         e.preventDefault()
         newsService
             .postComment(newsId, commentForm)
-            .then(res => loadNews())
+            .then(res => {
+                loadNews()
+                setCommentForm({comment:''})
+            })
             .catch(err => console.log(err))
     }
 
@@ -26,7 +29,7 @@ function CommentForm({newsId, loadNews}) {
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-4">
                 <Form.Label>Nuevo comentario</Form.Label>
-                <Form.Control  as="textarea" name="comment"  style={{ height: '100px' }} value={ commentForm.description } onChange={ handleInputChange } />
+                <Form.Control  as="textarea" name="comment"  style={{ height: '100px' }} value={ commentForm.comment } onChange={ handleInputChange } />
             </Form.Group>
             <Button variant="dark" type="submit" style={{ width: '50%' }}>Enviar</Button>
         </Form>

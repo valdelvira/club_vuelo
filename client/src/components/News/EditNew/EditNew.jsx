@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from 'react'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Container } from 'react-bootstrap'
 import uploadService from '../../../services/upload.service'
 import { AuthContext } from '../../../context/auth.context'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import newsService from '../../../services/news.service'
 
 
@@ -59,40 +59,36 @@ const EditNew = () => {
     function handleSubmit(e) {
 
         e.preventDefault()
-
         newsService
             .putEditNews(id, newForm)
-            .then(() => {
-                console.log(newForm)
-                navigate('/')
-
-            })
+            .then(() => navigate('/news'))
             .catch(err => console.log('Error en actualización de la noticia', err))
     }
 
-
-
     return (
-        <Form onSubmit={handleSubmit}>
+        <Container>
+            <Form onSubmit={handleSubmit}>
 
-            <Form.Group className="mb-3">
-                <Form.Label>Título</Form.Label>
-                <Form.Control type="text" name="title" value={newForm?.title} onChange={handleInputChange} />
-            </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Título</Form.Label>
+                    <Form.Control type="text" name="title" value={newForm?.title} onChange={handleInputChange} />
+                </Form.Group>
 
-            <Form.Group className="mb-3">
-                <Form.Label>Descripción</Form.Label>
-                <Form.Control type="text" name="description" value={newForm?.description} onChange={handleInputChange} />
-            </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Descripción</Form.Label>
+                    <Form.Control type="text" name="description" value={newForm?.description} onChange={handleInputChange} />
+                </Form.Group>
 
-            <Form.Group controlId="formFile" className="mb-3">
-                <Form.Label>Foto de la noticia</Form.Label>
-                <Form.Control type="file" name='imgURL' onChange={uploadNewImage} />
-            </Form.Group>
+                <Form.Group controlId="formFile" className="mb-3">
+                    <Form.Label>Foto de la noticia</Form.Label>
+                    <Form.Control type="file" name='imgURL' onChange={uploadNewImage} />
+                </Form.Group>
 
-            <Button variant="dark" type="submit" style={{ width: '100%' }}>Actualizar datos</Button>
+                <Button variant="dark" type="submit" style={{ width: '50%' }}>Actualizar datos</Button>
+                <Button variant="dark" style={{ width: '50%' }}><Link to='/news' >Volver al listado de noticias</Link></Button>
 
-        </Form>
+            </Form>
+        </Container>
     )
 }
 export default EditNew
