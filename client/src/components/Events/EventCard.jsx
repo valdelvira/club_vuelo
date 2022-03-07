@@ -1,24 +1,39 @@
 import { Card, Button, Col, Modal } from "react-bootstrap"
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 import '../../pages/EventsPage/EventsPage.css'
 import eventService from "../../services/event.service"
 import { AuthContext } from "../../context/auth.context"
-import { Navigate } from 'react-router-dom'
+import { Navigate, Link } from 'react-router-dom'
 
 
-const EventCard = ({ title, description, imgURL, _id }) => {
+const EventCard = ({ title, description, imgURL, participants, _id, refreshEvents }) => {
 
     const [showModal, setShowModal] = useState(false)
+    const [event, setEvent] = useState([])
 
     const { isLoggedIn, user } = useContext(AuthContext)
 
     const handleModalClose = () => setShowModal(false)
     const handleModalOpen = () => setShowModal(true)
 
+
     const deleteEvent = () => {
         eventService
             .deleteEvent(_id)
-            .then(() => Navigate('/events'))
+            .then(() => {
+                handleModalClose()
+                refreshEvents()
+            })
+            .catch(err => console.log(err))
+    }
+
+    const joinEvent = () => {
+        eventService
+            .joinEvent(_id)
+            .then(() => {
+                handleModalClose()
+                refreshEvents()
+            })
             .catch(err => console.log(err))
     }
 
@@ -49,11 +64,27 @@ const EventCard = ({ title, description, imgURL, _id }) => {
                             <Card.Text>
                                 {description}
                                 <p>Listado de participantes</p>
+                                {
+                                    participants.map(elem => {
+                                        return (<>
+                                            <p key={elem.username}>{elem.username}</p>
+                                            <Button variant="primary" onClick={joinEvent}>Borrar participante </Button>
+                                        </>)
+                                    })
+                                }
                             </Card.Text>
-                            {user?.role === 'ADMIN' && <Button variant="warning" onClick={deleteEvent(_id)}>Borrar</Button>}
-                            <Button variant="primary">Unirse </Button>
-                            <Button variant="warning">Editar </Button>
 
+
+
+                            {user?.role === 'ADMIN' && <Button variant="warning" onClick={deleteEvent}>Borrar</Button>}
+
+
+                            <Button variant="primary" onClick={joinEvent}>Unirse </Button>
+
+
+                            <Link to={`/events/${_id}/edit`}>
+                                <Button variant="warning">Editar </Button>
+                            </Link>
                         </Card.Body>
                     </Card>
                 </Modal.Body>

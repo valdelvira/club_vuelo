@@ -1,12 +1,12 @@
 import EventCard from "./EventCard"
 import { Col } from "react-bootstrap"
 
-const EventList = ({ events }) => {
+const EventList = ({ events, refreshEvents }) => {
 
     return (
         <>{
             events.map(event => {
-                return <Col md={4} key={event.title}> <EventCard {...event} /> </Col>
+                return <Col md={4} key={event.title}> <EventCard {...event} refreshEvents={refreshEvents} /> </Col>
             })
         }
         </>

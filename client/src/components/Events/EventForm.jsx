@@ -5,7 +5,7 @@ import eventService from "../../services/event.service"
 import { MessageContext } from "../../context/userMessage.context"
 import uploadService from "../../services/upload.service"
 
-const EventForm = ({ closeModal }) => {
+const EventForm = ({ closeModal, refreshEvents }) => {
 
     const [EventForm, SetEventForm] = useState({
         title: "",
@@ -46,7 +46,8 @@ const EventForm = ({ closeModal }) => {
         eventService
             .create(EventForm)
             .then(() => {
-                navigate('/')
+                navigate('/events')
+                refreshEvents()
                 closeModal()
                 setShowMessage(true)
                 setMessageInfo({ title: 'Exito', desc: 'Evento creado correctamente' })
