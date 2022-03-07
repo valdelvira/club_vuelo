@@ -3,7 +3,8 @@ import newsServices from '../../services/news.service'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/auth.context'
 import { useState, useEffect } from 'react'
-import { Navigate, useParams } from 'react-router-dom'
+import { Navigate, useParams, Link } from 'react-router-dom'
+import EditNew from '../../components/News/EditNew/EditNew'
 
 
 function NewsDetails() {
@@ -26,6 +27,15 @@ function NewsDetails() {
     //         .then(() =>  nav)
     //         .catch(err => console.log(err))
     // }
+
+    const putEditNews = () => {
+        newsServices
+
+            .putEditNews(_id)
+            .then(() => Navigate('/news'))
+            .catch(err => console.log(err))
+    }
+
 
     const loadNews = () => {
         newsServices
@@ -50,8 +60,9 @@ function NewsDetails() {
                         })
 
                     }
-                    {user?.role === 'ADMIN' && <Button variant="warning" onClick={deleteTheNews}>Borrar</Button>}
-                    {/* <Button variant="warning" onClick={deleteTheNews}>Borrar</Button> */}
+                    {user?.role === 'ADMIN' && <Link className='btn btn-warning' to={`/news/${theNew._id}/edit`}>Editar</Link>}
+                    {user?.role === 'ADMIN' && <Button variant="danger" onClick={deleteTheNews}>Borrar</Button>}
+
                 </Row>
             </Container>
         </>

@@ -28,6 +28,18 @@ const Navigation = () => {
                             <NavLink to="/about-us">
                                 <NavDropdown.Item as="span">Quiénes somos</NavDropdown.Item>
                             </NavLink>
+                            <NavLink to="#">
+                                <NavDropdown.Item as="span">Proyectos</NavDropdown.Item>
+                            </NavLink>
+                            <NavLink to="#">
+                                <NavDropdown.Item as="span">Sponsors</NavDropdown.Item>
+                            </NavLink>
+                            <NavLink to="#">
+                                <NavDropdown.Item as="span">Precios</NavDropdown.Item>
+                            </NavLink>
+                            <NavLink to="/contact">
+                                <NavDropdown.Item as="span">Contacto</NavDropdown.Item>
+                            </NavLink>
                         </NavDropdown>
 
                         <NavLink to="/meteo">
