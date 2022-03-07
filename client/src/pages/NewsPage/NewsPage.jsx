@@ -5,9 +5,10 @@ import { useContext } from 'react'
 import { AuthContext } from '../../context/auth.context'
 import { useState, useEffect } from 'react'
 import NewsList from '../../components/News/NewsList/NewsList'
+import EditNew from '../../components/News/EditNew/EditNew'
 
 function ListNews() {
-    const  [ news, setNews ] = useState([])
+    const [news, setNews] = useState([])
     const [showModal, setShowModal] = useState(false)
 
     useEffect(() => { loadNews() }, [])
@@ -17,33 +18,33 @@ function ListNews() {
     const handleModalOpen = () => setShowModal(true)
 
     const loadNews = () => {
-      
+
         newsServices
             .getAllNews()
-            .then(({data}) => setNews(data))
+            .then(({ data }) => setNews(data))
             .catch(err => console.log(err))
     }
-    return ( 
+    return (
         <>
-        <Container>
+            <Container>
                 <h1>Noticias {
                     isLoggedIn && <span onClick={handleModalOpen}>+Crear</span>
                 }</h1>
                 <Row>
-                    <NewsList news = { news }/>
+                    <NewsList news={news} />
                 </Row>
-
-        </Container>
-        <Modal show={showModal} onHide={handleModalClose} size="lg">
-            <Modal.Header closeButton>
-                <Modal.Title>Crear noticia</Modal.Title>
-            </Modal.Header >
-            <Modal.Body>
-                <CreateNew/>
-            </Modal.Body>
-        </Modal>
+                <EditNew />
+            </Container>
+            <Modal show={showModal} onHide={handleModalClose} size="lg">
+                <Modal.Header closeButton>
+                    <Modal.Title>Crear noticia</Modal.Title>
+                </Modal.Header >
+                <Modal.Body>
+                    <CreateNew />
+                </Modal.Body>
+            </Modal>
         </>
-     )
+    )
 }
 
 export default ListNews

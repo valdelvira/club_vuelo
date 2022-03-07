@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 const NewsCard = ({ _id, title, description, imgURL }) => {
     return (
-       <Col>
+        <Col>
             <Card style={{ width: '18rem' }}>
                 <Card.Img src={imgURL} />
                 <Card.Body>
@@ -11,9 +11,9 @@ const NewsCard = ({ _id, title, description, imgURL }) => {
                     <Card.Text>
                         {description}
                     </Card.Text>
-                       <Link to={`/details/${_id}`}>
-                            <Button variant="primary">Ver</Button>
-                       </Link>
+                    <Link to={`/news/${_id}`}>
+                        <Button variant="primary">Ver</Button>
+                    </Link>
                 </Card.Body>
             </Card>
         </Col>
