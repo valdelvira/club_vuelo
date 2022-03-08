@@ -12,6 +12,9 @@ import NewsDetails from "../pages/NewsPage/NewsDetails"
 import MeteoPage from "../pages/MeteoPage/MeteoPage"
 import EditNew from "../components/News/EditNew/EditNew"
 import EventsEdit from "../pages/EventsPage/EventsEdit"
+import UsersListPage from "../pages/UserListPage/UserListPage"
+import PayPage from "../pages/PayPage/PayPage"
+
 
 const AppRoutes = () => {
     return (
@@ -20,21 +23,29 @@ const AppRoutes = () => {
             <Route path="/" element={<IndexPage />} />
             <Route path="/about-us" element={<AboutUsPage />} />
             <Route path="/signup" element={<SignUpPage />} />
-
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/payment" element={<PayPage />} />
+            <Route path="/meteo" element={<MeteoPage />} />
+
+            <Route path="/news" element={<NewsPage />} />
             <Route path="/news" element={<PrivateRoute />}>
-                <Route path="" element={<NewsPage />} />
                 <Route path=":_id" element={<NewsDetails />} />
                 <Route path=":id/edit" element={<EditNew />} />
             </Route>
+
             <Route path="/profile/:user_id" element={<PrivateRoute />}>
                 <Route path="" element={<ProfilePage />} />
             </Route>
+
             <Route path="/events" element={<EventsPage />} />
-            <Route path="/events/:id/edit" element={<EventsEdit />} />
-            <Route path="/profile/:user_id" element={<ProfilePage />} />
-            <Route path="/profile/:user_id/edit" element={<EditProfileForm />} />
-            <Route path="/meteo" element={<MeteoPage />} />
+            <Route path="/events" element={<PrivateRoute />}>
+                <Route path=":id/edit" element={<EventsEdit />} />
+            </Route>
+            
+            <Route path="/profile" element={<PrivateRoute />}>
+                <Route path="" element={<UsersListPage />} />
+                <Route path=":user_id/edit" element={<EditProfileForm />} />
+            </Route>
 
             <Route path="*" element={<h1>404</h1>} />
 

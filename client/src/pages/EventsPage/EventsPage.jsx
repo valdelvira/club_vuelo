@@ -1,17 +1,14 @@
 import { Row, Container, Button, Modal } from "react-bootstrap"
 import { useEffect, useState } from "react"
-
 import eventService from "../../services/event.service"
-
 import EventForm from "../../components/Events/EventForm"
 import EventList from '../../components/Events/EventList'
-import EditEventForm from "../../components/Events/EditEventForm"
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
 
 const EventsPage = () => {
 
     const [events, setEvents] = useState([])
     const [showModal, setShowModal] = useState(false)
-
 
     const handleModalFormClose = () => setShowModal(false)
     const handleModalFormOpen = () => setShowModal(true)
@@ -33,7 +30,7 @@ const EventsPage = () => {
             <h1>Eventos</h1>
             <Button onClick={handleModalFormOpen}> Crear evento</Button>
             <Row>
-                <EventList events={events} refreshEvents={loadEvents} />
+                { !events.length ? <LoadingSpinner /> : <EventList events={events} refreshEvents={loadEvents} />}
             </Row>
 
             <Modal show={showModal} onHide={handleModalFormClose} size="lg">

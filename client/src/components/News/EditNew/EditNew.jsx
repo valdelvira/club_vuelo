@@ -2,12 +2,7 @@ import { Form, Button, Container } from 'react-bootstrap'
 import uploadService from '../../../services/upload.service'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { Form, Button, Container } from 'react-bootstrap'
-import uploadService from '../../../services/upload.service'
 import newsService from '../../../services/news.service'
-
-
-
 
 const EditNew = () => {
 

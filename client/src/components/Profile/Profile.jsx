@@ -5,8 +5,7 @@ import { AuthContext } from '../../context/auth.context'
 import EditProfileForm from './EditProfileForm'
 
 
-
-const Profile = ({ imageURL, aboutMe, flightHours, email }) => {
+const Profile = ({ username,imageURL, aboutMe, flightHours, email }) => {
 
     const { user } = useContext(AuthContext)
 
@@ -16,7 +15,7 @@ const Profile = ({ imageURL, aboutMe, flightHours, email }) => {
                 <Col>
                     <Card className='profileCard'>
                         <Card.Body>
-                            <Card.Title>{user?.username}</Card.Title>
+                            <Card.Title>{username}</Card.Title>
                             <Card.Text>
                                 Email : {email}
                                 <br></br>
@@ -35,7 +34,7 @@ const Profile = ({ imageURL, aboutMe, flightHours, email }) => {
                     <Image className='photoProfile' src={imageURL} />
                 </Col>
             </Row>
-            <Button>Editar Perfil</Button>
+            
             <EditProfileForm />
         </Container>
 

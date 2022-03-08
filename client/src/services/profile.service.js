@@ -16,15 +16,23 @@ class ProfileService {
         })
     }
 
-
-
     getProfile = id => {
         return this.api.get(`/profile/${id}`)
     }
 
+    getAllProfiles = () => {
+        return this.api.get(`/profile`)
+    }
+
+    deleteProfile = id => {
+        return this.api.delete(`/profile/${id}/delete`)
+    }
+
     editProfile = (id, profileForm) => {
+        console.log(id, profileForm);
         return this.api.put(`/profile/${id}/edit`, profileForm)
     }
+
 
 }
 

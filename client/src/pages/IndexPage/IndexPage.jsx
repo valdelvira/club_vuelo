@@ -4,17 +4,11 @@ import './IndexPage.css'
 import NewsCard from "../../components/News/NewsCard/NewsCard"
 import Facebook from "../../components/Facebook/Facebook"
 
-
-
 const IndexPage = () => {
-
 
     return (
 
-
-
         <>
-
             <UserMessage />
             <section className="hero">
                 <h1>Club de Vuelo UPM Akaflieg Madrid</h1>
