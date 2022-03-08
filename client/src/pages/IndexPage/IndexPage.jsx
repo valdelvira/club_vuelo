@@ -8,10 +8,7 @@ import Twitter from "../../components/Twitter/Twitter"
 const IndexPage = () => {
 
     return (
-<<<<<<< HEAD
-=======
 
->>>>>>> 3c421e6122dffa8aeb795101a4bf76e73ba5df96
         <>
             <UserMessage />
             <section className="hero">
