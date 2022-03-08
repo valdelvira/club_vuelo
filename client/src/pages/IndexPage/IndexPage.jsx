@@ -3,6 +3,7 @@ import { Container, Button, Row, Col, Image } from 'react-bootstrap'
 import './IndexPage.css'
 import NewsCard from "../../components/News/NewsCard/NewsCard"
 import Facebook from "../../components/Facebook/Facebook"
+import Twitter from "../../components/Twitter/Twitter"
 
 
 
@@ -17,13 +18,20 @@ const IndexPage = () => {
 
             <UserMessage />
             <section className="hero">
-                <h1>Club de Vuelo UPM Akaflieg Madrid</h1>
-                <p>La primera asociación universitaria en España dedicada a la ingeniería del vuelo a vela</p>
-
-                <Button>
-                    <p>Saber más</p>
-                </Button>
-
+                <Row className="d-flex">
+                    <Col>
+                        <br /><br />
+                        <h1>Club de Vuelo UPM Akaflieg Madrid</h1>
+                        <p>La primera asociación universitaria en España dedicada a la ingeniería del vuelo a vela</p>
+                    </Col>
+                </Row>
+                <Row className="d-flex">
+                    <Col>
+                        <Button >
+                            Saber más
+                        </Button>
+                    </Col>
+                </Row>
             </section>
 
             <Container>
@@ -56,6 +64,8 @@ const IndexPage = () => {
                         </Col>
                     </Row>
                     <Facebook />
+                    <Twitter />
+
                 </section>
 
             </Container>
