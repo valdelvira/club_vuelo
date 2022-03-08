@@ -5,17 +5,11 @@ import NewsCard from "../../components/News/NewsCard/NewsCard"
 import Facebook from "../../components/Facebook/Facebook"
 import Twitter from "../../components/Twitter/Twitter"
 
-
-
 const IndexPage = () => {
-
 
     return (
 
-
-
         <>
-
             <UserMessage />
             <section className="hero">
                 <Row className="d-flex">

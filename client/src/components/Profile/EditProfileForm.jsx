@@ -18,8 +18,7 @@ const EditProfileForm = () => {
 
     const { user, isLoading } = useContext(AuthContext)
     const navigate = useNavigate()
-
-
+    const [loadingImage, setLoadingImage] = useState(false)
 
     useEffect(() => {
         user && loadProfile()
@@ -44,12 +43,15 @@ const EditProfileForm = () => {
 
     const uploadProfileImage = e => {
 
+        setLoadingImage(true)
+
         const uploadData = new FormData()
         uploadData.append('imageData', e.target.files[0])
 
         uploadService
             .uploadImage(uploadData)
             .then(({ data }) => {
+                setLoadingImage(false)
                 setProfileForm({ ...profileForm, imageURL: data.cloudinary_url })
             })
             .catch(err => console.log(err))
@@ -90,10 +92,12 @@ const EditProfileForm = () => {
 
             <Form.Group controlId="formFile" className="mb-3">
                 <Form.Label>Foto de perfil</Form.Label>
-                <Form.Control type="file" name='imageURL' onChange={uploadProfileImage} />
+                <Form.Control type="file" name='imageURL' onChange={uploadProfileImage} disabled={loadingImage} />
             </Form.Group>
 
-            <Button variant="dark" type="submit" style={{ width: '100%' }}>Actualizar datos</Button>
+            <Button variant="dark" type="submit" style={{ width: '100%' }}>
+                {loadingImage ? 'Espere...' : 'Editar perfil'}
+            </Button>
 
         </Form>
     )

@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
     New
         .find()
         .populate('comments')
-        .then(response => res.json(response))
+        .then(response => res.status(200).json(response))
         .catch(err => res.status(500).json(err))
 })
 
@@ -25,7 +25,7 @@ router.get("/:new_id", isAuthenticated, (req, res) => {
         })
 
         .then(response => {
-            res.json(response)
+            res.status(200).json(response)
         })
         .catch(err => res.status(500).json(err))
 })
@@ -35,7 +35,7 @@ router.get("/:new_id/edit", isAuthenticated, (req, res) => {
 
     New
         .findById(new_id)
-        .then(response => res.json(response))
+        .then(response => res.status(200).json(response))
         .catch(err => res.status(500).json(err))
 })
 
@@ -45,7 +45,7 @@ router.post("/create", isAuthenticated, (req, res) => {
 
     New
         .create({ title, description, imgURL })
-        .then(response => res.json(response))
+        .then(response => res.status(200).json(response))
         .catch(err => res.status(500).json(err))
 })
 
@@ -56,7 +56,7 @@ router.put("/:new_id/edit", isAuthenticated, (req, res) => {
 
     New
         .findByIdAndUpdate(new_id, { title, description, imgURL, comment })
-        .then(response => res.json(response))
+        .then(response => res.status(200).json(response))
         .catch(err => res.status(500).json(err))
 })
 
@@ -66,7 +66,7 @@ router.delete("/:new_id/delete", isAuthenticated, (req, res) => {
 
     New
         .findByIdAndDelete(new_id)
-        .then(response => res.json(response))
+        .then(response => res.status(200).json(response))
         .catch(err => res.status(500).json(err))
 })
 
@@ -78,23 +78,20 @@ router.post("/comment/:new_id", isAuthenticated, (req, res) => {
 
     Comment
         .create({ comment, owner, new_id })
-        .then(response => {
-            return New.findByIdAndUpdate(new_id, { $push: { comments: response._id } })
-        })
-        .then(response => res.json(response))
+        .then(response => New.findByIdAndUpdate(new_id, { $push: { comments: response._id } }))
+        .then(response => res.status(200).json(response))
         .catch(err => res.status(500).json(err))
 })
 
-router.delete("/:comment_id/comment/delete", isAuthenticated, (req, res) => {
+router.delete("/:comment_id/:news_id/comment/delete", isAuthenticated, (req, res) => {
 
-    const { comment_id } = req.params
+    const { news_id, comment_id } = req.params
 
-    New.findByIdAndUpdate(comment_id, { $pull: { comments: comment_id } })
-    console.log(comment_id)
     Comment
         .findByIdAndDelete(comment_id)
-        .then(response => res.json(response))
-        .catch(err => res.status(500).json(err))
+        .then(() => New.findOneAndUpdate({ '_id': news_id }, { $pull: { comments: comment_id } }))
+        .then(response => res.status(200).json(response))
+        .catch(err => console.log(err))
 })
 
 

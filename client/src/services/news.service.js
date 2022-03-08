@@ -32,8 +32,8 @@ class NewsService {
         return this.api.delete(`/${id}/delete`)
     }
 
-    deleteComment(id) {
-        return this.api.delete(`/${id}/comment/delete`)
+    deleteComment(comment_id, id) {
+        return this.api.delete(`/${comment_id}/${id}/comment/delete`)
     }
 
     postComment(id, formComment) {
