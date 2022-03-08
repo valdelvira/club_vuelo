@@ -1,11 +1,11 @@
+import { useState, useEffect } from 'react'
+<<<<<<< HEAD
+=======
 import { Form, Button, Container } from 'react-bootstrap'
 import uploadService from '../../../services/upload.service'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+>>>>>>> 3c421e6122dffa8aeb795101a4bf76e73ba5df96
 import newsService from '../../../services/news.service'
-
-
-
 
 const EditNew = () => {
 

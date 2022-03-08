@@ -7,10 +7,14 @@ import profileService from '../../services/profile.service'
 
 const Profile = ({ imageURL, aboutMe, flightHours, email, refreshProfile }) => {
 
+<<<<<<< HEAD
     const { user } = useContext(AuthContext)
     const [showModal, setShowModal] = useState(false)
 
     const [profileUpdate, setProfileUpdate] = useState({})
+=======
+const Profile = ({ username,imageURL, aboutMe, flightHours, email }) => {
+>>>>>>> 3c421e6122dffa8aeb795101a4bf76e73ba5df96
 
     const handleModalClose = () => setShowModal(false)
     const handleModalOpen = () => setShowModal(true)
@@ -21,7 +25,7 @@ const Profile = ({ imageURL, aboutMe, flightHours, email, refreshProfile }) => {
                 <Col>
                     <Card className='profileCard'>
                         <Card.Body>
-                            <Card.Title>{user?.username}</Card.Title>
+                            <Card.Title>{username}</Card.Title>
                             <Card.Text>
                                 Email : {email}
                                 <br></br>
@@ -39,6 +43,7 @@ const Profile = ({ imageURL, aboutMe, flightHours, email, refreshProfile }) => {
                     <Image className='photoProfile' src={imageURL} />
                 </Col>
             </Row>
+<<<<<<< HEAD
             <Modal show={showModal} onHide={handleModalClose} size="lg">
                 <Modal.Header closeButton>
                     <Modal.Title>Editar perfil</Modal.Title>
@@ -47,6 +52,10 @@ const Profile = ({ imageURL, aboutMe, flightHours, email, refreshProfile }) => {
                     <EditProfileForm closeModal={handleModalClose} refreshProfile={refreshProfile} />
                 </Modal.Body>
             </Modal>
+=======
+            
+            <EditProfileForm />
+>>>>>>> 3c421e6122dffa8aeb795101a4bf76e73ba5df96
         </Container>
 
     )

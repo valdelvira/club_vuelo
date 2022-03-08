@@ -53,7 +53,15 @@ const Navigation = () => {
                         <NavLink to="/events">
                             <Nav.Link as="span" >Eventos</Nav.Link>
                         </NavLink>
+                        {
+                            user?.role ==='ADMIN' ?
 
+                                <NavLink to="/profile">
+                                    <Nav.Link as="span" >Usuarios</Nav.Link>
+                                </NavLink>
+                            :
+                                null
+                        }
 
                         {
                             !isLoggedIn ?
