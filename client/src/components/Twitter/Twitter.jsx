@@ -1,7 +1,7 @@
 
 const Twitter = () => {
     return (
-        <a class="twitter-timeline"
+        <a className="twitter-timeline"
             href="https://twitter.com/vueloupm"
             data-width="500"
             data-height="500">

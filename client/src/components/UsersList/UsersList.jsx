@@ -5,7 +5,10 @@ const UsersList = ({ usersList, refreshProfiles }) => {
     return (
         <>
         {
-            usersList.map(user => <Col md={4} key={user._id}> <UserCard {...user} refreshProfiles= {refreshProfiles} /> </Col>)
+            usersList.map(user => {
+            <Col md={4} key={user._id}> 
+                <UserCard {...user} refreshProfiles= {refreshProfiles} /> 
+            </Col>})
         }
         </>
     )

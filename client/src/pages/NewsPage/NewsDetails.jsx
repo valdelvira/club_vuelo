@@ -20,7 +20,7 @@ function NewsDetails() {
             .then(() => Navigate('/news'))
             .catch(err => console.log(err))
     }
- 
+
     const deleteComment = (comment_id) => {
         
         newsServices
@@ -37,7 +37,7 @@ function NewsDetails() {
     }
 
     const loadNews = () => {
-      
+    
         newsServices
             .getTheNew(_id)
             .then(({ data }) => {
@@ -58,7 +58,6 @@ function NewsDetails() {
                         <CommentForm newsId={ theNew._id } loadNews={loadNews}/>
                             {
                                 theNew.comments?.map(elem => {
-                                    console.log(elem)
                                     return (
                                         <span key={elem._id}>
                                             Escrito por: <q>{elem.owner?.name}</q>

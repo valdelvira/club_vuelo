@@ -3,18 +3,11 @@ import { Card, Container, Button, Row, Col, Image, Modal } from 'react-bootstrap
 import './Profile.css'
 import { AuthContext } from '../../context/auth.context'
 import EditProfileForm from './EditProfileForm'
-import profileService from '../../services/profile.service'
 
-const Profile = ({ imageURL, aboutMe, flightHours, email, refreshProfile }) => {
+const Profile = ({ username, imageURL, aboutMe, flightHours, email, refreshProfile }) => {
 
-<<<<<<< HEAD
     const { user } = useContext(AuthContext)
     const [showModal, setShowModal] = useState(false)
-
-    const [profileUpdate, setProfileUpdate] = useState({})
-=======
-const Profile = ({ username,imageURL, aboutMe, flightHours, email }) => {
->>>>>>> 3c421e6122dffa8aeb795101a4bf76e73ba5df96
 
     const handleModalClose = () => setShowModal(false)
     const handleModalOpen = () => setShowModal(true)
@@ -43,7 +36,6 @@ const Profile = ({ username,imageURL, aboutMe, flightHours, email }) => {
                     <Image className='photoProfile' src={imageURL} />
                 </Col>
             </Row>
-<<<<<<< HEAD
             <Modal show={showModal} onHide={handleModalClose} size="lg">
                 <Modal.Header closeButton>
                     <Modal.Title>Editar perfil</Modal.Title>
@@ -52,10 +44,6 @@ const Profile = ({ username,imageURL, aboutMe, flightHours, email }) => {
                     <EditProfileForm closeModal={handleModalClose} refreshProfile={refreshProfile} />
                 </Modal.Body>
             </Modal>
-=======
-            
-            <EditProfileForm />
->>>>>>> 3c421e6122dffa8aeb795101a4bf76e73ba5df96
         </Container>
 
     )

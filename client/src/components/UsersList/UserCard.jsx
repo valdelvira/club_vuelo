@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import profileService from '../../services/profile.service'
 
 const UserCard = ({ _id, name, lastname, email, refreshProfiles, role }) => {
-    
+
     const deleteProfile = id => {
         profileService
             .deleteProfile(id)
@@ -12,7 +12,6 @@ const UserCard = ({ _id, name, lastname, email, refreshProfiles, role }) => {
     }
 
     const changeRole = (id, role) => {
-
         const uploadData = new FormData()
         uploadData.append('role', role)
         profileService

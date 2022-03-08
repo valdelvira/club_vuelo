@@ -29,7 +29,6 @@ class ProfileService {
     }
 
     editProfile = (id, profileForm) => {
-        console.log(id, profileForm);
         return this.api.put(`/profile/${id}/edit`, profileForm)
     }
 
