@@ -21,7 +21,7 @@ router.get("/profile/:user_id", isAuthenticated, (req, res) => {
 })
 
 router.get("/profile/:user_id/edit", isAuthenticated, (req, res) => {
-    const { user_id } = req.payload._id
+    const user_id = req.payload._id
     User
         .findById(user_id)
         .then(response => res.json(response))
@@ -30,12 +30,14 @@ router.get("/profile/:user_id/edit", isAuthenticated, (req, res) => {
 
 router.put("/profile/:user_id/edit", isAuthenticated, (req, res) => {
 
-    const { user_id } = req.payload._id
-    const { name, surname, flightHours, aboutMe, email, imageURL, password } = req.body
+    const _id = req.payload._id
+    const { email, aboutMe, flightHours, imageURL } = req.body
 
     User
-        .findByIdAndUpdate(user_id, { name, surname, flightHours, aboutMe, email, imageURL, password })
-        .then(response => res.json(response))
+        .findByIdAndUpdate(_id, { email, aboutMe, flightHours, imageURL })
+        .then(response => {
+            res.json(response)
+        })
         .catch(err => res.status(500).json(err))
 })
 

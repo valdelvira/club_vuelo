@@ -10,9 +10,6 @@ const IndexPage = () => {
 
 
     return (
-
-
-
         <>
 
             <UserMessage />

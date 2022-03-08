@@ -59,7 +59,6 @@ const EditEventForm = () => {
         eventService
             .editEvent(id, eventForm)
             .then(() => {
-                console.log(eventForm)
                 navigate('/events')
             })
             .catch(err => console.log("Error en actualización de evento", err))

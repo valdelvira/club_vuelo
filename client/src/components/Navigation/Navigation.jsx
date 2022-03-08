@@ -28,7 +28,7 @@ const Navigation = () => {
                             <NavLink to="/about-us">
                                 <NavDropdown.Item as="span">Quiénes somos</NavDropdown.Item>
                             </NavLink>
-                            <NavLink to="#">
+                            <NavLink to="/projects">
                                 <NavDropdown.Item as="span">Proyectos</NavDropdown.Item>
                             </NavLink>
                             <NavLink to="#">

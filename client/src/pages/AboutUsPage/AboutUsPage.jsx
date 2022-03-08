@@ -3,6 +3,7 @@ import './AboutUsPage.css'
 import photo1 from './images/Flugzeuge-7-1-1.jpeg'
 
 
+
 const AboutUsPage = () => {
     return (
         <div className='aboutUs'>
@@ -37,10 +38,12 @@ const AboutUsPage = () => {
             <p>Antes de nada, debes ser miembro del Club de Vuelo de la UPM. Para apuntarte tienes que rellenar la hoja de inscripción que te entregaremos en el local del Club.</p>
             <p>Para formar parte del Akaflieg Madrid no es necesario poseer ninguna clase de conocimientos especiales ni habilidades. La finalidad última de esta organización es
                 conseguir que sus miembros aprendan y apliquen los conocimientos que van adquiriendo a lo largo del desarrollo de los distintos proyectos, por lo que no debe preocuparte
-                no tener la experiencia o los conocimientos necesarios.</p>
-            <p>Lo único que necesitas es una buena actitud y ser capaz de mantener un compromiso constante, estando dispuesto a trabajar y esforzarte por el resto del equipo. También
-                debes ser tolerante con los fallos de los demás, buscando siempre aprender de ellos o enseñar a los demás a través de ellos.</p>
-            <p>Inicialmente, durante el primer semestre desde que entres al Akaflieg, estarás en «periodo de pruebas». En este tiempo intentaremos enseñarte todo lo posible, pero
+                no tener la experiencia o los conocimientos necesarios.
+                <br /><br />
+                Lo único que necesitas es una buena actitud y ser capaz de mantener un compromiso constante, estando dispuesto a trabajar y esforzarte por el resto del equipo. También
+                debes ser tolerante con los fallos de los demás, buscando siempre aprender de ellos o enseñar a los demás a través de ellos.
+                <br /><br />
+                Inicialmente, durante el primer semestre desde que entres al Akaflieg, estarás en «periodo de pruebas». En este tiempo intentaremos enseñarte todo lo posible, pero
                 no gozarás de los privilegios del resto de miembros del Akaflieg hasta que termine ese periodo. El objetivo es que demuestres tu compromiso y capacidad para trabajar
                 «sin esperar nada a cambio».</p>
         </div >

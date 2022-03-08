@@ -17,7 +17,6 @@ class ProfileService {
     }
 
 
-
     getProfile = id => {
         return this.api.get(`/profile/${id}`)
     }

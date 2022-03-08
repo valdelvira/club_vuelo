@@ -10,8 +10,6 @@ const ProfilePage = () => {
     const [profile, setProfile] = useState([])
     const { user, isLoading } = useContext(AuthContext)
 
-
-
     useEffect(() => {
         user && loadProfile()
     }, [user])
@@ -26,7 +24,7 @@ const ProfilePage = () => {
 
     return (
         <Container>
-            Bienvenido al perfil de {user?.username}  <Profile {...profile} />
+            Bienvenido al perfil de {user?.username}  <Profile {...profile} refreshProfile={loadProfile} />
         </Container>
     )
 }

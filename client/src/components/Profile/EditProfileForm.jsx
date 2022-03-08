@@ -8,12 +8,13 @@ import { useNavigate } from 'react-router-dom'
 
 
 
-const EditProfileForm = () => {
+const EditProfileForm = ({ closeModal, refreshProfile }) => {
 
     const [profileForm, setProfileForm] = useState({
         email: "",
         flightHours: "",
         aboutMe: "",
+        img: ""
     })
 
     const { user, isLoading } = useContext(AuthContext)
@@ -60,17 +61,14 @@ const EditProfileForm = () => {
     function handleSubmit(e) {
 
         e.preventDefault()
-
         profileService
             .editProfile(user?._id, profileForm)
             .then(() => {
-                navigate('/')
-
+                closeModal()
+                refreshProfile()
             })
             .catch(err => console.log('Error en actualización de perfil', err))
     }
-
-
 
     return (
         <Form onSubmit={handleSubmit}>

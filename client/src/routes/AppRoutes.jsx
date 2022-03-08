@@ -12,6 +12,7 @@ import NewsDetails from "../pages/NewsPage/NewsDetails"
 import MeteoPage from "../pages/MeteoPage/MeteoPage"
 import EditNew from "../components/News/EditNew/EditNew"
 import EventsEdit from "../pages/EventsPage/EventsEdit"
+import ProjectsPage from "../pages/ProjectPage/ProjectsPage"
 
 const AppRoutes = () => {
     return (
@@ -20,6 +21,7 @@ const AppRoutes = () => {
             <Route path="/" element={<IndexPage />} />
             <Route path="/about-us" element={<AboutUsPage />} />
             <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
 
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/news" element={<PrivateRoute />}>

@@ -1,14 +1,19 @@
-import { useContext } from 'react'
-import { Card, Container, Button, Row, Col, Image } from 'react-bootstrap'
+import { useContext, useState } from 'react'
+import { Card, Container, Button, Row, Col, Image, Modal } from 'react-bootstrap'
 import './Profile.css'
 import { AuthContext } from '../../context/auth.context'
 import EditProfileForm from './EditProfileForm'
+import profileService from '../../services/profile.service'
 
-
-
-const Profile = ({ imageURL, aboutMe, flightHours, email }) => {
+const Profile = ({ imageURL, aboutMe, flightHours, email, refreshProfile }) => {
 
     const { user } = useContext(AuthContext)
+    const [showModal, setShowModal] = useState(false)
+
+    const [profileUpdate, setProfileUpdate] = useState({})
+
+    const handleModalClose = () => setShowModal(false)
+    const handleModalOpen = () => setShowModal(true)
 
     return (
         <Container>
@@ -25,8 +30,7 @@ const Profile = ({ imageURL, aboutMe, flightHours, email }) => {
                                 Horas de vuelo :
                                 {flightHours}
                             </Card.Text>
-                            <Button variant="warning">Editar</Button>
-                            <Button variant="danger">Borrar</Button>
+                            <Button variant="warning" onClick={handleModalOpen}>Editar</Button>
 
                         </Card.Body>
                     </Card>
@@ -35,8 +39,14 @@ const Profile = ({ imageURL, aboutMe, flightHours, email }) => {
                     <Image className='photoProfile' src={imageURL} />
                 </Col>
             </Row>
-            <Button>Editar Perfil</Button>
-            <EditProfileForm />
+            <Modal show={showModal} onHide={handleModalClose} size="lg">
+                <Modal.Header closeButton>
+                    <Modal.Title>Editar perfil</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <EditProfileForm closeModal={handleModalClose} refreshProfile={refreshProfile} />
+                </Modal.Body>
+            </Modal>
         </Container>
 
     )
